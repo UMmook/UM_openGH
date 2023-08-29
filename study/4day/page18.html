@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            h1 {color:red;}
+
+            .c1 {color: red;}
+            #id1 {color: green;}
+            
+            h1, p {
+                background-color: antiquewhite;
+            }
+
+            p {color:yellow;}
+            p {color:blue;}
+        </style>
+
+    </head>
+    <body>
+        <!--style은 해당 태그에 가까울수록 적용-->
+        <h1 style="color: chartreuse">제목글</h1>
+
+        <!--inline스타일 바깥 중에 id > class > tag 순으로 적용된다-->
+        <!--tag 끼리는 마지막에 작성된 스타일이 적용된다-->
+        <p id="id1" class="c1">내용 내용 내용 내용 내용 내용</p>
+        <p id="id2" class="c1">내용 내용 내용 내용 내용 내용</p>
+        <p id="id3" class="c2">내용 내용 내용 내용 내용 내용</p>
+    </body>
+</html>

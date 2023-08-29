@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            .container_static, .container_relative {
+                background-color: rgb(255, 209, 196);
+            }
+            .container_absolute {
+                /* background-color: rgb(255, 209, 196); */
+                background-image: url("img/엘가시아.png");
+                width: 200px;
+                height: 200px;
+                position: relative;
+            }
+            .test_static {
+                background-color: bisque;
+                margin: 5px; padding: 5px;
+                position: static;
+            }
+            .test_relative {
+                background-color: bisque;
+                margin: 5px; padding: 5px;
+                position: relative;
+            }
+            #test_relative3 {
+                left: 5px; top: 3px; /* (x, y) 좌표 */
+            }
+            .test_fixed {
+                background-color: rgb(45, 192, 72);
+                position: fixed;
+                width: 200px;
+                height: 50px;
+                left: 0px; top: 0px;
+            }
+            .test_absolute {
+                /* background-color: bisque; */
+                color: blue;
+                text-shadow: 0px 0px 10px rgb(255, 242, 0);
+                margin: 5px; padding: 5px;
+                position: absolute;
+                left: 0px; top: 150px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container_static">
+            <div class="test_static">static contents1</div>
+            <div class="test_static">static contents2</div>
+            <div class="test_static">static contents3</div>
+            <div class="test_static">static contents4</div>
+        </div>
+
+        <div class="container_relative">
+            <div class="test_relative">relative contents1</div>
+            <div class="test_relative">relative contents2</div>
+            <div id="test_relative3" class="test_relative">relative contents3</div>
+            <div class="test_relative">relative contents4</div>
+        </div>
+
+        <div class="container_fixed">
+            <div class="test_fixed">광고 (fixed)</div>
+        </div>
+
+        <div class="container_absolute">
+            <div class="test_absolute">엘가시아 (absolute)</div>
+        </div>
+    </body>
+</html>

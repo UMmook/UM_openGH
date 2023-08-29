@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            .navi ul li {
+                float: left;
+                width: 150px;
+            }   /*왼쪽 정렬, 150px 간격*/
+            .navi a:link {
+                text-decoration: none;
+                padding: 10px;
+            }   /*링크의 밑줄 제거, 해당 tag 크기 10px*/
+            .navi a:hover {
+                background-color: #000000;
+                color: #ffffff;
+            }   /*링크 위에 마우스를 올리면 색 변경*/
+            .navi a:active {
+                background-color: #ff0000;
+            }   /*링크를 클릭을 유지 중일 때 색 변경*/
+            .navi ul {
+                list-style: none;
+            }
+
+            #intro:target {
+                background-color: aquamarine;
+            }
+
+            #tbox1:disabled {
+                color: #ff0000;
+            }   /*tbox1이 disabled일 때는 ff0000*/
+
+            #tbox1:enabled {
+                color: #0000ff;
+            }   /*tbox1이 enabled일 때는 0000ff*/
+
+            #basic:checked + label {
+                color: red;
+            }   /*radio 버튼을 체크 할 시에는 해당 label이 빨간색으로 변경*/
+
+            input[type=text] {
+                color: red;
+            }   /*input 타입이 text인 것은 글자색을 red로 변경*/
+
+            input:not([type=text]) {
+                color: green;
+            }   /*input 타입이 text가 아닌 것은 글자색을 green으로 변경*/
+        </style>
+    </head>
+    <body>
+        <div>
+            <a href="https://www.redcross.or.kr/">적십자로</a>
+            <p>:link <br>
+            방문하지 않았을 때 (기본 a에서 파란색 상태)</p>
+            <p>:visited <br>
+            방문했을 때 (기본 a에서는 보라색 상태)</p>
+            <p>:hover <br>
+            마우스를 올려 두었을 때 (모바일에서는 무의미)</p>
+            <p>:active <br>
+            클릭했을 때 (선택 했을 때)</p>
+            <p>:focus <br>
+            마우스를 올려두거나 tab으로 초점을 주었을 때</p>
+        </div>
+        
+        <nav class="navi">
+            <ul>
+                <li><a href="#intro">안내</a></li>
+                <li><a href="#room">객실</a></li>
+                <li><a href="#price">요금</a></li>
+                <li><a href="#reservation">예약</a></li>
+            </ul>
+        </nav>
+
+        <br>
+        <hr>
+
+        <div class="contents">
+            <div id="intro">이용 안내~~
+                <br><br><br><br><br><br><br><br><br><br><br><hr>
+            </div>
+            
+            <div id="room">객실 소개~~
+                <br><br><br><br><br><br><br><br><br><br><br><hr>
+            </div>
+            
+            <div id="price">요금 소개~~
+                <br><br><br><br><br><br><br><br><br><br><br><hr>
+            </div>
+            
+            <div id="reservation">예약 하기~~
+                <br><br><br><br><br><br><br><br><br><br><br><hr>
+            </div>
+
+            <form action="">
+                <textarea id="tbox1" disabled style="width: 100%;" 
+                rows="5" cols="20" name="motivation">회원 약관</textarea>
+
+                <hr>
+
+                <input type="radio" name="sel1" id="basic">
+                <label for="basic">선택 1</label>
+
+                <hr>
+
+                <input type="text" id="tet1">
+                <label for="txt1">text 입력 창</label>
+                <input type="tel" id="tet2">
+            </form>
+            
+        </div>
+    </body>
+</html>

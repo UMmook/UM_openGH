@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .container {
+                display: flex;
+                border: 1px solid black;
+                height: 200px;
+            }
+            .box {
+                background-color: gray;
+                margin: 5px;
+                width: 120px;
+            }
+            p {
+                color: black;
+                text-align: center;
+            }
+            #opt1 { align-items: flex-start; }
+            #opt2 { align-items: flex-end; }
+            #opt3 { align-items: center; }
+            #opt4 { align-items: baseline; }
+            #opt5 { align-items: stretch; }
+
+            #id_p2 { align-self: flex-start; }
+            #id_p4 { align-self: flex-end; }
+        </style>
+    </head>
+    <body>
+        <div class="container" id="opt1">
+            <div class="box">   <p style="font-size: 10px;">메일</p>    </div>
+            <div class="box">   <p style="font-size: 20px;">카페</p>    </div>
+            <div class="box">   <p style="font-size: 30px;">블로그</p>    </div>
+            <div class="box">   <p style="font-size: 40px;">쇼핑</p>    </div>
+        </div>
+        <div class="container" id="opt2">
+            <div class="box">   <p>메일</p>    </div>
+            <div class="box">   <p>카페</p>    </div>
+            <div class="box">   <p>블로그</p>    </div>
+            <div class="box">   <p>쇼핑</p>    </div>
+        </div>
+        <div class="container" id="opt3">
+            <div class="box">   <p>메일</p>    </div>
+            <div class="box">   <p>카페</p>    </div>
+            <div class="box">   <p>블로그</p>    </div>
+            <div class="box">   <p>쇼핑</p>    </div>
+        </div>
+        <div class="container" id="opt4">
+            <div class="box">   <p style="font-size: 10px;">메일</p>    </div>
+            <div id="id_p2" class="box">   <p style="font-size: 20px;">카페</p>    </div>
+            <div class="box">   <p style="font-size: 30px;">블로그</p>    </div>
+            <div id="id_p4" class="box">   <p style="font-size: 40px;">쇼핑</p>    </div>
+        </div>
+        <div class="container" id="opt5">
+            <div class="box">   <p>1</p>    </div>
+            <div class="box">   <p>2</p>    </div>
+            <div class="box">   <p>3</p>    </div>
+            <div class="box">   <p>4</p>    </div>
+        </div>
+    </body>
+</html>

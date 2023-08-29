@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .contents :nth-child(3) {
+                color: red;
+            }
+
+            .contents :nth-child(2n+1) {
+                background-color: bisque;
+            }
+
+            li.new::before {
+                content: "😀";
+                color: red;
+            }
+
+            li.new::after {
+                content: "\01F602";
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li class="new">제품1</li>
+            <li class="old">제품2</li>
+            <li class="old">제품3</li>
+            <li class="new">제품4</li>
+        </ul>
+
+        <div class="contents">
+            <p>내용 내용 1</p>
+            <p>내용 내용 2</p>
+            <p>내용 내용 3</p>
+            <p>내용 내용 4</p>
+            <p>내용 내용 5</p>
+        </div>
+    </body>
+</html>

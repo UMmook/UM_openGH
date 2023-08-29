@@ -1,0 +1,4 @@
+react-native (react) - google flutter
+web / app <-> server
+
+android < apple

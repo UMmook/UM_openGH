@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .desc {
+                background-color: beige;
+                border: 10px dashed black;
+                width: 100px;
+                height: 100px;
+                margin: 20px;
+                padding: 20px;
+                float: left;
+            }
+            #clip-border { background-clip: border-box; }
+            #clip-padding { background-clip: padding-box; }
+            #clip-content { background-clip: content-box; }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="desc" id="clip-border">clip-border</div>
+            <div class="desc" id="clip-padding">clip-padding</div>
+            <div class="desc" id="clip-content">clip-content</div>
+        </div>
+    </body>
+</html>

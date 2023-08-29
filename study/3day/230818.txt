@@ -1,0 +1,46 @@
+- 회사 분류 -
+SI 업체 (System Integration) : 고객사의 웹서비스 시스템 구축 (웹페이지 + 웹서버), [삼성 SDS, LG CNS]
+			 고객 니즈 파악, 용역, 유지보수(SM), 판매
+
+솔루션 업체 : 기존 솔루션 (모듈, 서비스, 제품) (엔진/미션/타이어) 고객사에게 공급 (raw, customize)
+서비스 업체 : (최종) 소비자 직접 사업 (네, 카, 라, 쿠, 배, 토, 당, 야), 스타트업 투자
+
+클라우드 : (기존 웹) 호스팅 서비스 (도메인, 서버 대여), 리눅스 서버 대여 + 1대 2대 / 연간
+	 (클라우드) 미리 만들어진 서비스 모듈로 시스템 구축 + 종량제
+	 (AWS : 현재의 웹 서비스, MS Azure + Digital twin)
+
+로그인 (윈도우)
+중앙 서버 - 사내망 - 단말기들 (중앙 서버 공유)
+중앙 서버 - 인터넷 - PCs
+포탈 서버 - 인터넷 - PC/mobile dev (web service)
+DB서버 - 인터넷 - DB client
+
+서버 (backend, on OS) : Program lang
+client (frontend on Web-browser / V8 (자바스크립트 엔진)) : script
+fullstack = backend + frontend
+DevOps = 개발 + 운영 [fullstack + Operation]
+MLOps = 머신러닝 (인공지능) + DevOps
+CTO -> CEO
+[ FinOps = 신뢰성 ]
+
+V8 엔진 : MS edge, node.js, chrome
+
+HW - 서비스 - SW
+
+Vue.js 프론트엔드 / Node.js 백엔드
+
+nextjs (front) vs nestjs (backend)
+
+backend : java spring boot >>> node.js (javascript)
+frontend : React
+
+p35 들여쓰기 : Spacebar, tab
+
+    a
+	a
+
+syntax vs semantics
+
+코끼리를 냉장고에 넣고 문을 닫으면 들어갑니다.
+
+syntax (ok), semantics (x)

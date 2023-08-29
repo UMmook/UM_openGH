@@ -1,0 +1,28 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <img src="img/logo.png">
+        <div style="font-size: 30px">비트맵 이미지</div>
+
+        <hr>
+
+        <svg width="100px" height="100px">
+            <circle cx="50" cy="50" r="40" fill="green"></circle>
+        </svg>
+        <div style="font-size: 30px">SVG 이미지 - 벡터이미지</div>
+
+        <hr>
+
+        <canvas width="100px" height="100px"
+        style="border: 2px solid;" id="canvas1"></canvas>
+        <script>
+            var canva = document.getElementById("canvas1");
+            var context = canva.getContext("2d");
+            context.fillStyle = "#ff0000";
+            context.fillRect(0, 0, 50, 60);
+        </script>
+        <div style="font-size: 30px">canvas 이미지 - 벡터이미지</div>
+    </body>
+</html>

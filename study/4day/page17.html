@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <style>
+            .c1 {color: red}
+            .c2 {color: blue}
+            .c3 {color: green}
+        </style>
+    </head>
+    <body>
+        <div class="c1">c1의 내용</div>
+        <div class="c2">c2의 내용</div>
+        <div class="c3">c3의 내용</div>
+
+        <h1>에밋 (Emmet)</h1>
+
+        <p>!사용</p> <!--! tab-->
+        
+        <p>태그명 tab</p> <!--div tab-->
+        <!--
+            <div></div>
+        -->
+        
+        <p>태그 여러개: 태그 * 갯수</p> <!--div*10-->
+        <!--
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        -->
+        
+        <p>포합관계 만들기 : 태그 > 태그 > 태그</p> <!--div>ul>li-->
+        <!--
+            <div>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        -->
+
+        <p>조합 예제 : div>ul*2>li*2</p>
+        <!--
+            <div>
+                <ui>
+                    <li></li>
+                    <li></li>
+                </ui>
+                <ui>
+                    <li></li>
+                    <li></li>
+                </ui>
+            </div>
+        -->
+
+        <p>조합 예제 : div>(ol>li*2)+(ul>li*2)</p> <!--직접 입력 안할시 안됨-->
+        <!--
+            <div>
+                <ol>
+                    <li></li>
+                    <li></li>
+                </ol>
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        -->
+
+        <p>컨텐츠 표현 : div{div 컨텐츠}</p> <!--에밋 안뜰시 괄호 다시 입력-->
+        <!--
+            <div>div컨텐츠</div>
+        -->
+
+        <p>컨텐츠 반복 표현 : div*3{내용}</p>
+        <!--
+            <div>내용</div>
+            <div>내용</div>
+            <div>내용</div>
+        -->
+
+        <p>컨텐츠 반복 표현 $는 숫자 : div*3{내용$}</p>
+        <!--
+            <div>내용1</div>
+            <div>내용2</div>
+            <div>내용3</div>
+        -->
+
+        <p>id를 사용하는 태그 : div#id1</p>
+        <!--
+            <div id="id1"></div>
+        -->
+
+        <p>활용 : div#id$*3</p>
+        <!--
+            <div id="id1"></div>
+            <div id="id2"></div>
+            <div id="id3"></div>
+        -->
+
+        <p>활용 : div#id$*3{내용$}</p>
+        <!--
+            <div id="id1">내용1</div>
+            <div id="id2">내용2</div>
+            <div id="id3">내용3</div>
+        -->
+
+        <p>class를 사용하는 태그 : div.c$*3{내용$}</p>
+        <!--
+            <div class="c1">내용1</div>
+            <div class="c2">내용2</div>
+            <div class="c3">내용3</div>
+        -->
+
+        <p>div#container>(ul.list>li.name${이름$}*3)+(ol.list>li.job${직업$}*3)</p>
+        <!--어려울 시 한번에 하지말고 div#container부터 하나씩 추가할 것--> 
+        <!--
+            <div id="container">
+                <ul class="list">
+                    <li class="name1">이름1</li>
+                    <li class="name2">이름2</li>
+                    <li class="name3">이름3</li>
+                </ul>
+                <ol class="list">
+                    <li class="job1">직업1</li>
+                    <li class="job2">직업2</li>
+                    <li class="job3">직업3</li>
+                </ol>
+            </div>
+        -->
+
+
+        
+    </body>
+</html>

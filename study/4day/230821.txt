@@ -1,0 +1,10 @@
+HTML / CSS -> Bootstrap (CSS응용), web template
+JavaScript
+
+파이썬 / 알고리즘
+DB
+
+Node.js (서버)
+React.js (클라이언트)
+
+

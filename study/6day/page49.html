@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #wrapper1 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 100px);
+            }
+            .box_a { 
+                background-color: blue;
+                /* grid-column: 1/4; */
+                grid-column-start: 1;
+                grid-column-end: 4;
+            }
+            .box_b { 
+                background-color: green;
+                /* grid-row: 2/4; */
+                grid-row-start: 2;
+                grid-row-end: 4;
+            }
+            .box_c { 
+                background-color: orange;
+                /* grid-column: 2/4; */
+                grid-column-start: 2;
+                grid-column-end: 4;
+            }
+            .box_d { 
+                background-color: yellow;
+                /* grid-column: 3/4; */
+                grid-column-start: 3;
+                grid-column-end: 4;
+            }
+
+            #wrapper2 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 100px);
+                grid-template-areas: 
+                "box1 box1 box1"
+                "box2 box3 box3"
+                "box2 . box4";
+            }
+            .box { padding: 10px; text-align: center; }
+            .box1 { background-color: blue; grid-area: box1; }
+            .box2 { background-color: green; grid-area: box2; }
+            .box3 { background-color: orange; grid-area: box3; }
+            .box4 { background-color: yellow; grid-area: box4; }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper1">
+            <div class="box box_a">box_a</div>
+            <div class="box box_b">box_b</div>
+            <div class="box box_c">box_c</div>
+            <div class="box box_d">box_d</div>
+        </div>
+
+        <br><hr><br>
+
+        <div id="wrapper2">
+            <div class="box box1">box1</div>
+            <div class="box box2">box2</div>
+            <div class="box box3">box3</div>
+            <div class="box box4">box4</div>
+        </div>
+    </body>
+</html>

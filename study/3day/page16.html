@@ -1,0 +1,46 @@
+<!DOCTYPE html> <!--HTML5 인지하는 중이라는 표시-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #name {
+                color: blue;
+            }
+            .desc {
+                color: green;
+            }
+            .mococoColor {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="img/내실해야지.jpg" width="200">
+        <!--모코코만 색 변경시 id에 색추가-->
+        <!--모코코와 모코코2 둘 다 색 변경시-->
+        <!--class 추가해서 색추가 또는 #name, #name2 설정-->
+        <p id="name" class="mococoColor">모코코</p>
+        <p class="desc">모코코 내실해</p>
+        <p id="name2" class="mococoColor">모코코2</p>
+        <p class="desc">모코코 내실해2</p>
+
+        <button onclick="change_text()">id name을 바꿔봐요</button>
+        <button onclick="change_text2()">id name2을 바꿔봐요</button>
+
+        <script>
+            const change_text = () => {
+                document.getElementById("name").innerHTML = "Mococo";
+            }
+            const change_text2 = () => {
+                document.getElementById("name2").innerHTML = "Mococo2";
+            }
+        </script>
+    </body>
+</html>

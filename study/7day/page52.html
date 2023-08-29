@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            .container {
+                background-color: beige;
+                width: 1000px; height: 300px;
+                margin: 10px auto; /* 가로 10px 주고 세로는 auto로 중간 정렬 */
+            }
+            .origin {
+                width: 100px; height: 100px;
+                border: 1px solid black;
+                float: left;
+                margin: 100px;
+            }
+            .orange-box {
+                width: 100px; height: 100px;
+                background-color: orange;
+            }
+            /* 평소엔 그대로 상자속 주황 상자가 존재
+            마우스가 상자 위로 가면 주황 상자가 이동 */
+            #movex:hover { transform: translateX(50px); }
+            #movey:hover { transform: translateY(20px); }
+            #movexy:hover { transform: translate(10px, 20px); }
+
+            #scalex:hover { transform: scaleX(2); }
+            #scaley:hover { transform: scaleY(1.5); }
+            #scalexy:hover { transform: scale(0.7, 0.7); }
+
+            #perspective {
+                perspective: 500px;
+            }
+            .rotateX:hover {
+                transform: rotateX(50deg); /* 마우스가 올라갈 시 회전 (원근감) */
+            }
+
+            #container-skew {
+                width: 600px;
+                margin: 20px auto;
+            }
+            h1 {
+                width: 500px;
+                height: 80px;
+                background-color: black;
+                color: white;
+                line-height: 80px;
+                text-align: center;
+                transform: skewX(15deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="origin">
+                <div class="orange-box" id="movex"></div>
+            </div>
+            <div class="origin">
+                <div class="orange-box" id="movey"></div>
+            </div>
+            <div class="origin">
+                <div class="orange-box" id="movexy"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="origin">
+                <div class="orange-box" id="scalex"></div>
+            </div>
+            <div class="origin">
+                <div class="orange-box" id="scaley"></div>
+            </div>
+            <div class="origin">
+                <div class="orange-box" id="scalexy"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="origin" id="perspective">
+                <div class="rotateX">
+                    <img width="200px" src="img/오물오물.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="container-skew">
+            <h1>CSS 변형 함수 익히기</h1>
+        </div>
+    </body>
+</html>

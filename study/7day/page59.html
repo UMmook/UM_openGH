@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            .box {
+                width: 100px; height: 100px;
+                margin: 50px; float: left;
+            }
+            #box1 { 
+                background-color: greenyellow; 
+                border: 1px solid transparent;
+                animation-name: shape_left;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;
+                /* infinite : 계속 반복 */
+            }
+            #box2 { 
+                background-color: violet; 
+                border: 1px solid transparent;
+                animation-name: rotate_right;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;
+                /* infinite : 계속 반복 */
+            }
+            @keyframes shape_left {
+                from { border: 1px solid transparent; }
+                to { border: 1px solid black; border-radius: 50%; }
+            }
+            @keyframes rotate_right {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(45deg); }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+    </body>
+</html>

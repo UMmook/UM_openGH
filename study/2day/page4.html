@@ -1,0 +1,34 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form action="handle1" method="get">
+
+            <label for="field">지원 분야 1지망: </label>
+            <input type="radio" name="field" value="개발팀">개발팀
+            <input type="radio" name="field" value="기술영업팀">기술영업팀
+            <input type="radio" name="field" value="생산팀">생산팀
+
+            <br>
+
+            <label for="field">지원 분야 2지망: </label>
+            <input type="radio" name="field2" value="관리팀">관리팀
+            <input type="radio" name="field2" value="기획팀">기획팀
+            <input type="radio" name="field2" value="회계팀">회계팀
+
+            <hr>
+
+            <label for="bohun">보훈 대상: </label>
+            <input type="checkbox" name="bohun">    <!--disabled 적용시 값 변경 불가능-->
+
+            <hr>
+
+            <label for="motivation">지원 동기 (500자 내외로 기술): </label> <br>
+            <textarea style="width: 100%" rows="5" cols="20" name="motivation"></textarea>
+
+            <input type="submit">
+            
+        </form>
+    </body>
+</html>
