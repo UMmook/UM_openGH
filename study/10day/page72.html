@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let grade = "";
+            let jumsu = prompt("총 점수는?"); // C 70%, A 10%, B 20%
+            if (jumsu >= 0 && jumsu <= 100) {
+                if (jumsu >= 70 && jumsu < 80) {
+                    grade = "C";
+                } else if (jumsu >= 80 && jumsu < 90) {
+                    grade = "B";
+                } else if (jumsu >= 90) {
+                    grade = "A";
+                } else {
+                    grade = "F";
+                }
+
+                /*
+                if (jumsu >= 90) {
+                    grade = "A";
+                } else if (jumsu >= 80) {
+                    grade = "B";
+                } else if (jumsu >= 70) {
+                    grade = "C";
+                } else if (jumsu >= 60) {
+                    grade = "D";
+                } else {
+                    grade = "F";
+                }
+                */
+
+                document.write("<p>학점은 " + grade + "입니다.</p>");
+            } else {
+                document.write("<p>점수가 범위를 벗어났습니다.</p>");
+            }
+            
+
+            
+        </script>
+    </body>
+</html>

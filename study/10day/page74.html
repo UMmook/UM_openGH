@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let selection = prompt("당신의 선택은? 1~10번");
+
+            // if문 사용
+            // if (selection == "1") {
+            //     document.write("1번을 선택했습니다.");
+            // } else if (selection == "2") {
+            //     document.write("2번을 선택했습니다.");
+            // } else if (selection == "3") {
+            //     document.write("3번을 선택했습니다.");
+            // } else if (selection == "4") {
+            //     document.write("4번을 선택했습니다.");
+            // } else if (selection == "5") {
+            //     document.write("5번을 선택했습니다.");
+            // } else if (selection == "6") {
+            //     document.write("6번을 선택했습니다.");
+            // } else if (selection == "7") {
+            //     document.write("7번을 선택했습니다.");
+            // } else if (selection == "8") {
+            //     document.write("8번을 선택했습니다.");
+            // } else if (selection == "9") {
+            //     document.write("9번을 선택했습니다.");
+            // } else if (selection == "10") {
+            //     document.write("10번을 선택했습니다.");
+            // } else {
+            //     document.write("잘못된 번호입니다. 1~10번 중에 선택해주세요.");
+            // }
+
+            // if + switch문 사용 [조합 활용]
+            if (selection > 0 && selection < 11) {
+                switch(selection) {
+                    case selection:
+                        document.write(selection + "번을 선택했습니다.");
+                        break;
+                    default :
+                        break;
+                }
+            } else {
+                document.write("잘못된 번호입니다. 1~10번 중에 선택해주세요.");
+            }
+
+            // switch문 사용
+            // switch(selection) {
+            //     case "1":
+            //         document.write("1번을 선택했습니다.");
+            //         break;
+            //     case "2":
+            //         document.write("2번을 선택했습니다.");
+            //         break;
+            //     case "3":
+            //         document.write("3번을 선택했습니다.");
+            //         break;
+            //     case "4":
+            //         document.write("4번을 선택했습니다.");
+            //         break;
+            //     case "5":
+            //         document.write("5번을 선택했습니다.");
+            //         break;
+            //     case "6":
+            //         document.write("6번을 선택했습니다.");
+            //         break;
+            //     case "7":
+            //         document.write("7번을 선택했습니다.");
+            //         break;
+            //     case "8":
+            //         document.write("8번을 선택했습니다.");
+            //         break;
+            //     case "9":
+            //         document.write("9번을 선택했습니다.");
+            //         break;
+            //     case "10":
+            //         document.write("10번을 선택했습니다.");
+            //         break;
+            //     default:
+            //         document.write("잘못된 번호입니다. 1~10번 중에 선택해주세요.");
+            //         break;
+            // }
+        </script>
+    </body>
+</html>
