@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            sensorVals = [23, 24, 25, 27, 290, 34, 30, 28, 26, 24];
+            for (let i=0; i<10; i++) {
+                //document.write(sensorVals[i] + " ");
+                /*
+                if (sensorVals[i] < 20 || sensorVals[i] > 70) {
+                    document.write("<p>Error code: 1234, 온도 범위 초과</p>");
+                    break;
+                }
+                */
+                if (sensorVals[i] < 20 || sensorVals[i] > 70) {
+                    document.write("<p>warning code: 1234, 온도 범위 초과</p>");
+                    continue;
+                }
+                if (sensorVals[i] > 25) {
+                    document.write("<p>온도가 " + sensorVals[i] +
+                        "도 이다. 그래서 냉각 장치 가동 on</p>");
+                }
+            }
+        </script>
+    </body>
+</html>

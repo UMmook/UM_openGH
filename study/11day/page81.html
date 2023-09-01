@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 구구단 나열
+            // for문
+            for (let sum1=1; sum1<10; sum1++) {
+                for (let sum2=1; sum2<10; sum2++) {
+                    res = sum1 * sum2;
+                    document.write(res + " ");
+                }
+                document.write("<br>");
+            }
+
+            // while문
+            let sum1 = 1;
+            while (sum1 < 10) {
+                let sum2 = 1;
+                while(sum2 < 10) {
+                    res = sum1 * sum2;
+                    document.write(res + " ");
+                    sum2++;
+                }
+                document.write("<br>");
+                sum1++;
+            }
+        </script>
+    </body>
+</html>

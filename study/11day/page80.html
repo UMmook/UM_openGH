@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>카운트 테스트</title>
+    </head>
+    <body>
+        <script>
+            // 퀘스트 [카운트 다운 프로그램 60초부터 0초까지 숫자 출력 후 0초가 되면 "발사" 출력]
+            // for문 이용
+            for (let count=60; count>=0; count--) {
+                document.write(count + "  ");
+                if (count === 0) {
+                    document.write("<br><br> 발사!");
+                }
+            }
+
+            // while문 이용
+            let count = 60;
+            while (count >= 0) {
+                document.write(count + " ");
+                if (count === 0) {
+                    document.write("<br><br> 발사!");
+                }
+                count--;
+            }
+
+
+            // 강사님 코드
+            // for문
+            for (let count=60; count>=0; count--) {
+                document.write(count + "  ");
+            }
+            document.write("<br><br> 발사!");
+
+            // while문
+            //let count = 60;
+            while (count >= 0) {
+                document.write(count + "  ");
+                count--;
+            }
+            document.write("<br><br> 발사!");
+
+            // for문 딜레이 추가 -- js에서만 가능
+            /*
+            function sleep(ms) {
+                const t1 = Date.now() + ms;
+                while(Date.now() < t1) {}
+            }
+            for (let count=60; count>=0; count--) {
+                document.write(count + "  ");
+                sleep(1000); //ms
+            }
+            document.write("<br><br> 발사!");
+            */
+        </script>
+    </body>
+</html>

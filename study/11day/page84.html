@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 1~10 -> 10~19 까지 나열 후 모든 수의 합
+            let sum = 0;
+            for (let sum_hei=1; sum_hei<11; sum_hei++) {
+                for (let sum_wid=1; sum_wid<11; sum_wid++) {
+                    res = sum_hei + sum_wid - 1;
+                    sum = sum + res;
+                    document.write(res + " ");
+                }
+                document.write("<br>");
+            }
+            document.write("<h1>모든 숫자의 합 = " + sum + "</h1>");
+        </script>
+    </body>
+</html>

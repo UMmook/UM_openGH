@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .my-strong{ color: red; }
+        </style>
+    </head>
+    <body>
+        <script>
+            for (let dan=2; dan<10; dan++) {
+                for (let gop=1; gop<10; gop++) {
+                    res = dan * gop;
+                    if (gop % 2 == 0) {
+                        document.write("<p class='my-strong'>" + 
+                            dan + " * " + gop + " = " + res + "</p>");
+                    } else {
+                        document.write("<p>" + dan + " * " + gop + " = " + res + "</p>");
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

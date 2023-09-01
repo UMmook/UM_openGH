@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 1~100 모든 정수의 각 자리에 나온 수 더한값
+            let num1 = 0;
+            let num10 = 0;
+            let num100 = 0;
+            let res = 0;
+            let sum = 0;
+            for (let num=1; num<=100; num++) {
+                num1 = parseInt(num % 10);
+                num10 = parseInt(num / 10 % 10);
+                num100 = parseInt(num / 100 % 10);
+                res = num1 + num10 + num100;
+                document.write(num100 + " + " + num10 + " + " + num1 + " = " + res + "<br>");
+                sum = sum + num1 + num10 + num100;
+            }
+            document.write("<h1>모든 수의 합 = " + sum + "</h1>");
+        </script>
+    </body>
+</html>

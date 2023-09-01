@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 피타고라스의 정리 갯수 구하기
+            let count = 0;
+            for (let a=1; a<=100; a++) {
+                for (let b=1; b<=100; b++) {
+                    for (let c=1; c<=100; c++) {
+                        resA = a * a;
+                        resB = b * b;
+                        resC = c * c;
+                        res = resA + resB;
+                        if (res == resC) {
+                            count = count + 1;
+                            document.write("a = " + a + ", b = " + b + ", c = " + c);
+                            document.write("<br>");
+                            document.write("aa = " + resA + ", bb = " + resB + ", cc = " + resC);
+                            document.write("<br>");
+                            document.write("aa + bb = " + res + ", cc = " + resC);
+                            document.write("<br>");
+                            document.write("count = " + count);
+                            document.write("<hr>");
+                        }
+                    }
+                }
+            }
+            document.write("<h1>총 갯수 = " + count + "</h1>");
+        </script>
+    </body>
+</html>
