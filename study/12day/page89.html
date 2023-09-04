@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <img src="img/놀자에요.png">
+        <script>
+            seatNum = 1;
+            document.write("<table>");
+                for (let rowNum=1; rowNum<=2; rowNum++) {
+                    document.write("<tr>");
+                        for (let colNum=1; colNum<=5; colNum++) {
+                            document.write("<td id='seat" + seatNum + "'>");
+                                document.write("좌석" + seatNum);
+                            document.write("</td>");
+                            seatNum++;
+                        }
+                    document.write("</tr>");
+                }
+            document.write("</table>");
+
+            // 함수 : function, subroutine, procedure, method
+            function reservation() {
+                let seatResNum = prompt("예약하고 싶은 좌석 번호");
+                document.getElementById("seat" + seatResNum).innerHTML = "예매완료";
+
+            }
+        </script>
+        <button onclick="reservation()">좌석 예약하기</button>
+    </body>
+</html>

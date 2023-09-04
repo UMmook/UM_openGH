@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .detail {
+                display: none;
+            }
+            .over {
+                background-color: rgba(255, 255, 255, 0.5);
+                position: absolute; /* 버튼 위치 왼쪽 밑으로 설정 */
+                left: 30px;
+                bottom: 30px;
+                border: 1px solid #ccc;
+                font-size: 1.2em;
+            }
+            #imgbox {
+                position: relative; /* 버튼의 포지션을 사진을 기준으로 함 */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="item">
+            <div id="imgbox">
+                <img src="img/flower.jpg" alt=""> <br>
+                <button class="over" id="open" 
+                onclick="toggleDetail()">상세 설명 보기</button>
+            </div>
+            <div id="desc" class="detail">
+                <h1>등심 붓꽃</h1>
+                <p>설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+            </div>
+        </div>
+        <script>
+            desc_status = false;
+
+            function toggleDetail() {
+                if(desc_status == true) {
+                    document.querySelector("#desc").style.display = 'none';
+                    document.querySelector("#open").innerHTML = "상세 설명 보기";
+                    desc_status = false;
+                } else {
+                    document.querySelector("#desc").style.display = 'block';
+                    document.querySelector("#open").innerHTML = "상세 설명 닫기";
+                    desc_status = true;
+                }
+                
+            }
+        </script>
+    </body>
+</html>

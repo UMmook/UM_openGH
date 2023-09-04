@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="change">change</div>
+        <p>문단 1</p>
+        <p>문단 2</p>
+        <script>
+            const changeColor = () => {
+                document.querySelector("p").style.color = 'red';
+            }
+            const changeColorHandlerReg = () => {
+                // 방법1
+                // let changeBtn = document.querySelector('#change');
+                // changeBtn.onclick = changeColor;
+
+                // 방법2
+                // document.querySelector('#change').onclick = changeColor;
+
+                // 방법3
+                document.querySelector('#change').onclick = function() {
+                    document.querySelector("p").style.color = 'red';
+                };
+            }
+            changeColorHandlerReg();
+        </script>
+    </body>
+</html>
