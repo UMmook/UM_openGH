@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <h1>
+                <h1>이벤트 공지</h1>
+                <img src="img/로스트아크.PNG">
+                <p>
+                    <a href="page101_main.html" 
+                    onclick="loadURL(this.href);return false">자세히 보기</a>
+                </p>
+                <script>
+                    const loadURL = (url) => {
+                        window.opener.location = url;
+                        window.close();
+                    }
+                </script>
+            </h1>
+        </div>
+    </body>
+</html>

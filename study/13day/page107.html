@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <img src="img/cup-1.png" alt="" id="cup1" style="border: 1px solid black;">
+        <p id="move"></p>
+        <p id="click"></p>
+        <script>
+            document.getElementById("cup1").onmousemove = (event) => {
+                document.getElementById("move").innerHTML = 
+                    "<h3>유형 : " + event.type + 
+                    " / X좌표 : " + event.pageX + 
+                    " / Y좌표 : " + event.pageY + "</h3>";
+            }
+            document.getElementById("cup1").onclick = (event) => {
+                document.getElementById("click").innerHTML = 
+                    "<h3>유형 : " + event.type + 
+                    " / X좌표 : " + event.pageX + 
+                    " / Y좌표 : " + event.pageY + "</h3>";
+            }
+        </script>
+    </body>
+</html>

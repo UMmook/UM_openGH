@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>layer popup</title>
+        <style>
+            #popup-layer {
+                position: fixed; top: 0; left: 0; z-index: 10000;
+                background-color: rgba(0, 0, 0, 0.5);
+                width: 100%; height: 100%;
+            }
+            .popup-box {
+                position: relative; top: 50%; left: 50%;
+                overflow: auto; width: 375px; height: 600px;
+                transform: translate(-50%, -50%);
+                z-index: 1002; box-sizing: border-box;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div onclick="openLayerPopup()">팝업을 열어보자</div>
+        
+        <div id="popup-layer" style="display: none;">
+            <div class="popup-box">
+                <div class="popup-contents">
+                    팝업 컨텐츠 텍스트
+                </div>
+                <div>
+                    <button onclick="closeLayerPopup()">닫기</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            const openLayerPopup = () => {
+                document.getElementById("popup-layer").style.display = "block"
+            }
+            const closeLayerPopup = () => {
+                document.getElementById("popup-layer").style.display = "none"
+            }
+        </script>
+    </body>
+</html>

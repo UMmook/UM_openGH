@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>DOM에 P를 추가</h1>
+        <button onclick="add_p_element()">P 요소 추가 하기</button>
+        <div id="info"></div>
+        
+        <script>
+            const add_p_element = () => {
+                let newP = document.createElement("p");
+                let txtNode = document.createTextNode("새로 태어난 element");
+                newP.appendChild(txtNode);
+                document.getElementById("info").appendChild(newP);
+            }
+        </script>
+    </body>
+</html>

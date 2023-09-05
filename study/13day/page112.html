@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Web - removeChild</h1>
+        <form>
+            <input type="text" id="subject">
+            <button onclick="newRegister()">추가</button>
+        </form>
+        <ul id="itemlist">
+
+        </ul>
+
+        <script>
+            const newRegister = () => {
+                let newItem = document.createElement("li");
+                let subject = document.getElementById("subject");
+                let newText = document.createTextNode(subject.value);
+                newItem.appendChild(newText);
+
+                let itemlist = document.getElementById("itemlist");
+                itemlist.insertBefore(newItem, itemlist.childNodes[0]);
+
+                subject.value = "";
+            }
+        </script>
+    </body>
+</html>

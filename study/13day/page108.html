@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #desc {
+                color: blue;
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="desc">색 테스트</p>
+        <p id="mouse-event" 
+        style="background-color: rgb(114, 255, 114); font-size: 1em;">menu1</p>
+        <script>
+            document.getElementById("desc").style.color = "red";
+            document.getElementById("desc").style.backgroundColor = "yellow";
+
+            let mouseP = document.getElementById("mouse-event");
+            mouseP.addEventListener("mouseover", () => {mouseP.style.fontSize='2em';})
+            mouseP.addEventListener("mouseout", () => {mouseP.style.fontSize='1em';})
+        </script>
+    </body>
+</html>

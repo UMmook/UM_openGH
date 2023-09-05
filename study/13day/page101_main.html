@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>나만의 커스텀 팝업을 띄워 보자</h1>
+        <p>우리 사이트에 오신 것을 환영합니다.</p>
+        <script>
+            let newWin = window.open("page98_notice1.html", "pop1", 
+            "width=500, height=400, left=100, top=200");
+            // left, top 모니터 기준 좌표
+            if (newWin == null) {
+                alert("팝업 차단이 설정 되어 있네요, 해제해주세요");
+            } else {
+                alert("팝업이 잘 떳네요");
+            }
+        </script>
+    </body>
+</html>

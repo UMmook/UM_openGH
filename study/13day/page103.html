@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <button onclick="doInnerText()">doInerText</button>
+        <button onclick="doInnerHtml()">doInnerHtml</button>
+        <div id="current"></div>
+
+        <script>
+            const doInnerText = () => {
+                document.getElementById("current").innerText = new Date();
+            }
+            const doInnerHtml = () => {
+                document.getElementById("current").innerHTML = new Date();
+            }
+        </script>
+    </body>
+</html>

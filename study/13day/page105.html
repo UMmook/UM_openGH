@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <img style="width: 30%;" onclick="select('blue')" src="img/coffee-blue.jpg" alt="">
+        <img style="width: 30%;" onclick="select('gray')" src="img/coffee-gray.jpg" alt="">
+        <img style="width: 30%;" onclick="select('pink')" src="img/coffee-pink.jpg" alt="">
+
+        <img style="width: 100%;" id="big" src="img/coffee-blue.jpg" alt="">
+        <script>
+            const select = (color) => {
+                let img_path = "img/coffee-" + color + ".jpg";
+                document.getElementById('big').setAttribute("src", img_path);
+            }
+        </script>
+    </body>
+</html>

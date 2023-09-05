@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <img id="btn1" src="img/switch-blue.PNG">
+        <script>
+            btn1_status = "blue";
+            document.getElementById("btn1").onclick = () => {
+                if (btn1_status == "red") {
+                    document.getElementById("btn1").setAttribute("src", "img/switch-blue.PNG");
+                    btn1_status = "blue";
+                } else {
+                    document.getElementById("btn1").setAttribute("src", "img/switch-red.PNG");
+                    btn1_status = "red";
+                }
+            }
+        </script>
+    </body>
+</html>
