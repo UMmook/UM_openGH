@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Context - path</h1>
+        <canvas id="c1" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas = document.querySelector('#c1');
+            const ctx = myCanvas.getContext("2d");
+
+            ctx.beginPath();
+            ctx.moveTo(50, 50);     // 시작점 (50, 50)
+            ctx.lineTo(250, 250);   // 끝점 (250, 250)
+            ctx.stroke();           // 그리기
+        </script>
+
+        <!-- ----------------------------------------------- -->
+        
+        <h1>Context - 삼각형</h1>
+        <canvas id="c2" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas2 = document.querySelector('#c2');
+            const ctx2 = myCanvas2.getContext("2d");
+            
+            ctx2.beginPath();
+            ctx2.moveTo(50, 50);
+            ctx2.lineTo(150, 100);
+            ctx2.lineTo(50, 150);
+            ctx2.closePath();   // 닫힌 도형 (VS 열린 도형)
+            ctx2.stroke();
+
+            ctx2.beginPath();
+            ctx2.moveTo(150, 100);
+            ctx2.lineTo(250, 50);
+            ctx2.lineTo(250, 150);
+            ctx2.closePath();   // 열린 도형도 내부 색칠 가능
+            ctx2.stroke();
+            ctx2.fillStyle = "rgb(0, 200, 0)";
+            ctx2.fill();
+        </script>
+
+        <!-- ----------------------------------------------- -->
+
+        <h1>Context - 원</h1>
+        <canvas id="c3" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas3 = document.querySelector('#c3');
+            const ctx3 = myCanvas3.getContext("2d");
+
+            ctx3.fillStyle = "yellow";
+            ctx3.strokeStyle = "red";
+
+            ctx3.beginPath();
+            // 원 중심 좌표 (200, 150), 반지름 100, 시작 각도 0, 끝 각도 2PI (360)
+            // (반시계방향 기본값 true)
+            ctx3.arc(200, 150, 100, 0, 2*Math.PI);
+            ctx3.closePath();
+            ctx3.fill();
+            ctx3.stroke();
+        </script>
+
+        <!-- ----------------------------------------------- -->
+
+        <h1>Context - 반원, 호</h1>
+        <canvas id="c4" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas4 = document.querySelector('#c4');
+            const ctx4 = myCanvas4.getContext("2d");
+
+            ctx4.fillStyle = "yellow";
+            ctx4.strokeStyle = "red";
+
+            ctx4.beginPath();
+            // 원 중심 좌표 (120, 100), 반지름 50, 시작 각도 0, 끝 각도 PI (180)
+            // (반시계방향 기본값 true)
+            ctx4.arc(120, 100, 50, 0, (2*Math.PI/360)*180, true);
+            ctx4.arc(280, 100, 50, 0, Math.PI, false);
+            ctx4.fill();
+
+            ctx4.beginPath();
+            ctx4.arc(120, 200, 50, (2*Math.PI/360)*90, (2*Math.PI/360)*270, false);
+            ctx4.closePath();
+            ctx4.stroke();
+
+            ctx4.beginPath();
+            ctx4.arc(200, 200, 50, 0, (2*Math.PI/360)*60, false);
+            ctx4.stroke();
+        </script>
+
+        <!-- ----------------------------------------------- -->
+        
+        <h1>Context - 타원</h1>
+        <canvas id="c5" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas5 = document.querySelector('#c5');
+            const ctx5 = myCanvas5.getContext("2d");
+
+            ctx5.strokeStyle = "red";
+            ctx5.beginPath();
+            // 타원 원점 (200, 70), 반지름(80, 50), 회전 0
+            // 시작 각도 0 (3시방향), 끝 각도 2PI, (반시계방향 기본값 true)
+            ctx5.ellipse(200, 70, 80, 50, 0, 0, 2*Math.PI);
+            ctx5.stroke();
+
+            ctx5.strokeStyle = "blue";
+            ctx5.beginPath();
+            // 타원 원점 (150, 200), 반지름(80, 50), 회전 60
+            // 시작 각도 0 (3시방향), 끝 각도 2PI, (반시계방향 기본값 true)
+            ctx5.ellipse(150, 200, 80, 50, (Math.PI/180)*60, 0, 2*Math.PI);
+            ctx5.stroke();
+        </script>
+    </body>
+</html>

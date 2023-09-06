@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <canvas id="c1" width="600" height="500"></canvas>
+
+        <script>
+            const myCanvas1 = document.querySelector('#c1');
+            const ctx = myCanvas1.getContext("2d");
+
+            // 얼굴
+            ctx.fillStyle = "red";
+            ctx.strokeStyle = "black";
+            ctx.beginPath();
+            ctx.arc(200, 200, 150, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            // 원 중심 좌표 (200, 200), 반지름 150, 시작 각도 0, 끝 각도 PI (180)
+            // (반시계방향 기본값 true)
+            ctx.arc(200, 200, 150, 0, (2*Math.PI/360)*180, true);
+            ctx.fill();
+
+            ctx.beginPath();
+            // 타원 원점 (200, 200), 반지름(150, 50), 회전 0
+            // 시작 각도 0 (3시방향), 끝 각도 2PI, (반시계방향 기본값 true)
+            ctx.ellipse(200, 200, 150, 50, 0, 0, 2*Math.PI);
+            ctx.fill();
+
+            // 눈
+            ctx.beginPath();
+            ctx.moveTo(60, 130);
+            ctx.quadraticCurveTo(80, 40, 150, 180);
+            ctx.lineWidth = 5;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(300, 130);
+            ctx.quadraticCurveTo(280, 40, 190, 180);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(190, 190);
+            ctx.quadraticCurveTo(180, 190, 175, 150);
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // 눈동자
+            ctx.fillStyle = "black";
+            ctx.beginPath();
+            ctx.ellipse(120, 200, 5, 10, 0, 0, 2*Math.PI);
+            ctx.ellipse(220, 200, 5, 10, 0, 0, 2*Math.PI);
+            ctx.fill();
+
+            // 반원 입
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.arc(200, 260, 80, 0, (Math.PI/180)*170, false);
+            ctx.fill();
+
+            // ctx.fillStyle = "red";
+            // ctx.beginPath();
+            // ctx.arc(200, 260, 80, 0.7, (Math.PI/180)*170, false);
+            // ctx.fill();
+
+            // 이빨
+            // ctx.beginPath();
+            // ctx.moveTo(240, 305);
+            // ctx.lineTo(250, 280);
+            // ctx.stroke();
+
+            // ctx.beginPath();
+            // ctx.moveTo(195, 295);
+            // ctx.lineTo(200, 280);
+            // ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(135, 305);
+            ctx.lineTo(275, 290);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(170, 270);
+            ctx.lineTo(185, 340);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(225, 265);
+            ctx.lineTo(235, 335);
+            ctx.stroke();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="c1" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas1 = document.querySelector('#c1');
+            const ctx = myCanvas1.getContext("2d");
+
+            ctx.font = "60px Arial";
+            ctx.fillText("Hello!", 50, 50);     // (50, 50)에 Hello! 출력
+            ctx.strokeText("Hello!", 50, 100);  // (50, 100)에 Hello! 출력
+
+            ctx.font = "italic 60px Arial";     // 이태리 폰트
+            ctx.fillText("Hello!", 50, 150);
+
+            ctx.font = "bold 60px Arial";       // 굵은 폰트
+            ctx.fillText("Hello!", 50, 200);
+
+        </script>
+
+        <!-- ----------------------------------------------- -->
+
+        <canvas id="c2" width="600" height="500"></canvas>
+
+        <script>
+            const myCanvas2 = document.querySelector('#c2');
+            const ctx2 = myCanvas2.getContext("2d");
+
+            let img = new Image();
+            img.src = "img/붐볼2.png";
+            img.onload = function() {
+                ctx2.drawImage(img, 0, 0, myCanvas2.width, myCanvas2.height);
+                // (400, 100)(400, 300)에 img (200 x 170) 출력
+                ctx2.drawImage(img, 400, 100, 200, 170);
+                ctx2.drawImage(img, 400, 300, 200, 170);
+            }
+        </script>
+
+        <!-- ----------------------------------------------- -->
+
+        <canvas id="c3" width="600" height="500"></canvas>
+
+        <script>
+            const myCanvas3 = document.querySelector('#c3');
+            const ctx3 = myCanvas3.getContext("2d");
+
+            let img2 = new Image();
+            img2.src = "img/뉴진스.jpg";
+            img2.onload = function() {
+                // ctx3.drawImage(img2, 0, 0, myCanvas3.width, myCanvas3.height);
+                // 60, 85 -> 215, 290
+                // (60, 85) + (155, 205)
+                ctx3.drawImage(img2, 60, 85, 155, 205,      // 원본 이미지 정보
+                                    60-10, 85-10, 155/2, 205/2);      // 붙여넣을 캔버스 정보
+            }
+        </script>
+
+        <!-- ----------------------------------------------- -->
+
+        <canvas id="c4" width="600" height="500"></canvas>
+
+        <script>
+            const myCanvas4 = document.querySelector('#c4');
+            const ctx4 = myCanvas4.getContext("2d");
+
+            let img3 = new Image();
+            img3.src = "img/뉴진스.jpg";
+            img3.onload = function() {
+                ctx4.drawImage(img3, 0, 0, myCanvas4.width, myCanvas4.height);
+            }
+            ctx4.beginPath();
+            ctx4.arc(90, 170, 80, 0, 2*Math.PI);
+            ctx4.moveTo(200, 190);
+            ctx4.arc(200, 190, 80, 0, 2*Math.PI);
+            ctx4.moveTo(300, 170);
+            ctx4.arc(300, 170, 80, 0, 2*Math.PI);
+            ctx4.moveTo(400, 130);
+            ctx4.arc(400, 130, 80, 0, 2*Math.PI);
+            ctx4.moveTo(510, 160);
+            ctx4.arc(510, 150, 80, 0, 2*Math.PI);
+            ctx4.clip();
+        </script>
+    </body>
+</html>

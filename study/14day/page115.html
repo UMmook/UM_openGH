@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Context - Rect(사각형)</h1>
+        <canvas width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas = document.querySelector('canvas');
+            const ctx = myCanvas.getContext("2d");
+            ctx.fillStyle = "rgb(0, 0, 255)";
+            ctx.fillRect(10, 10, 100, 100); // 시작좌표(10, 10), 폭100, 높이100
+
+            ctx.fillStyle = "rgb(0, 255, 0)";
+            ctx.fillRect(10 + 100, 10, 100, 100);
+            ctx.fillRect(10, 10 + 100, 100, 100);
+
+            ctx.strokeStyle = "black";
+            ctx.strokeRect(10 + 100, 10 + 100, 100, 100);
+            ctx.strokeRect(10, 10, 100, 100);
+
+            ctx.clearRect(10 + 50, 10 + 50, 100, 100);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <canvas id="c1" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas1 = document.querySelector('#c1');
+            const ctx = myCanvas1.getContext("2d");
+
+            ctx.scale(1, 0.7);  // 가로 세로 비율 재설정
+
+            // 얼굴
+            ctx.fillStyle = "green";
+            ctx.strokeStyle = "black";
+            ctx.beginPath();
+            ctx.arc(150, 150, 80, 0, 2*Math.PI);
+            ctx.fill();
+
+            // 입
+            ctx.beginPath();
+            ctx.arc(150, 150, 50, 0, Math.PI);
+            ctx.lineWidth = 5;
+            ctx.stroke();
+
+            // 눈
+            ctx.fillStyle = "white";
+            ctx.strokeStyle = "green";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(120, 80, 20, 0, 2*Math.PI);
+            ctx.moveTo(200, 80);
+            ctx.arc(180, 80, 20, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.stroke();
+
+            // 눈동자
+            ctx.fillStyle = "black";
+            ctx.beginPath();
+            ctx.arc(120, 80, 5, 0, 2*Math.PI);
+            ctx.arc(180, 80, 5, 0, 2*Math.PI);
+            ctx.fill();
+        </script>
+    </body>
+</html>

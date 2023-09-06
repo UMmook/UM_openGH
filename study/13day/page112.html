@@ -9,7 +9,7 @@
         <h1>Web - removeChild</h1>
         <form>
             <input type="text" id="subject">
-            <button onclick="newRegister()">추가</button>
+            <button onclick="newRegister(); return false;">추가</button>
         </form>
         <ul id="itemlist">
 
@@ -26,6 +26,20 @@
                 itemlist.insertBefore(newItem, itemlist.childNodes[0]);
 
                 subject.value = "";
+
+                let items_li = document.querySelectorAll("li");
+                for (let i=0; i<items_li.length; i++) {
+                    items_li[i].addEventListener("click", function() {
+                        // if
+                        if (this.parentNode) {
+                            this.parentNode.removeChild(this);
+                        }
+                        // 위에 if를 사용하든 밑에 remove를 사용하든 결과가 같음
+                        // remove
+                        // items_li[i].remove();
+
+                    });
+                }
             }
         </script>
     </body>

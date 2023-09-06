@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Context - Curve 곡선</h1>
+        <canvas id="c1" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas1 = document.querySelector('#c1');
+            const ctx1 = myCanvas1.getContext("2d");
+
+            ctx1.beginPath();
+            ctx1.moveTo(50, 200);
+            // (200, 50)가상의 중감점, 조절점, (350, 200) 끝점
+            ctx1.quadraticCurveTo(200, 50, 350, 200);
+            ctx1.stroke();
+
+            ctx1.strokeStyle = "red";
+            ctx1.beginPath();
+            ctx1.moveTo(50, 200);
+            ctx1.lineTo(200, 50);
+            ctx1.lineTo(350, 200);
+            ctx1.stroke();
+        </script>
+
+        <!-- ----------------------------------------------- -->
+        
+        <h1>Context - Wave 물결 (조절점 1개)</h1>
+        <canvas id="c2" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas2 = document.querySelector('#c2');
+            const ctx2 = myCanvas2.getContext("2d");
+
+            ctx2.beginPath();
+            ctx2.moveTo(50, 100);
+            // (100, 50)가상의 중감점, 조절점, (150, 100) 끝점
+            ctx2.quadraticCurveTo(100, 50, 150, 100);
+            // (200, 150)가상의 중감점, 조절점, (250, 100) 끝점
+            ctx2.quadraticCurveTo(200, 150, 250, 100);
+            // (300, 50)가상의 중감점, 조절점, (350, 100) 끝점
+            ctx2.quadraticCurveTo(300, 50, 350, 100);
+            ctx2.stroke();
+
+            ctx2.strokeStyle = "red";
+            ctx2.beginPath();
+            ctx2.moveTo(50, 100);
+            ctx2.lineTo(100, 50);
+            ctx2.lineTo(150, 100);
+
+            ctx2.lineTo(200, 150);
+            ctx2.lineTo(250, 100);
+
+            ctx2.lineTo(300, 50);
+            ctx2.lineTo(350, 100);
+            ctx2.stroke();
+        </script>
+
+        <!-- ----------------------------------------------- -->
+        
+        <h1>Context - Wave 물결 (조절점 2개)</h1>
+        <canvas id="c3" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas3 = document.querySelector('#c3');
+            const ctx3 = myCanvas3.getContext("2d");
+
+            ctx3.beginPath();
+            ctx3.moveTo(50, 100);
+            ctx3.bezierCurveTo(90, 250, 310, 10, 350, 100);
+            ctx3.stroke();
+
+            ctx3.strokeStyle = "red";
+            ctx3.beginPath();
+            ctx3.moveTo(50, 100);
+            ctx3.lineTo(90, 250);
+            ctx3.lineTo(310, 10);
+            ctx3.lineTo(350, 100);
+            ctx3.stroke();
+        </script>
+
+        <!-- ----------------------------------------------- -->
+
+        <h1>Context - Path2D</h1>
+        <canvas id="c4" width="400" height="300"></canvas>
+
+        <script>
+            const myCanvas4 = document.querySelector('#c4');
+            const ctx4 = myCanvas4.getContext("2d");
+
+            let triangle = new Path2D();
+            triangle.moveTo(100, 100);
+            triangle.lineTo(300, 100);
+            triangle.lineTo(200, 260);
+            triangle.closePath();
+
+            ctx4.fillStyle = "blue";
+            ctx4.stroke(triangle);
+
+        </script>
+    </body>
+</html>
