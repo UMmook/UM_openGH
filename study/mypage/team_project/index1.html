@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5056942c71.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+      </style>
+</head>
+<body>
+    <div class="container">
+    <nav>
+        <div class="nav_container">
+            <div class="nav_icon">
+                <img src="img/weather.png" width="50px"> 28&#8451;
+                <div class="textArea">Today's Weather</div>
+            </div>
+            <div>
+            <img class="profile" src="img/쿼카1.png" width="50px">
+            </div>
+         </div>
+         
+        <div class="room">
+            <div class="dining">
+                <div class="dining_wrap">
+                <img id="dining_big" src="img/dining.png" width="70px">
+                <div>Dining Room</div>
+                <div>8 devices</div>
+                </div>
+            </div>
+            <div class="office">
+                <div class="office_wrap">
+                <img id="office_big" src="img/officeroom.png" width="70px">
+                <div>Office Room</div>
+                <div>12 devices</div>
+                </div>
+            </div>
+        </div> 
+    </nav>
+
+    <main>
+            <div class="main">
+            <div class="textArea2">Accessories</div>
+            <div class="main_container">
+            <div class="left_box">
+                <div class="outdoor">
+                        <img id="outdoor_icon" src="img/outdoor.png" width="70px">
+                        <div>Outdoor Bulb</div>
+                        <div><img id="btn1" src="img/toggle-off-solid.svg" width="50px"></div>
+                        <div id="onoff">OFF</div>
+                </div>
+                <div class="speaker">
+                    <img id="speaker_icon" src="img/speaker.png" width="70px">
+                    <div>Speaker</div>
+                    <div id="song">Playing</div>
+                    <div class="music_c">
+                        <img onclick="previousSong()" src="img/pre.png" width="20px">
+                        <img id="stop" onclick="stop()" src="img/stop.png" width="20px">
+                        <img onclick="nextSong()" src="img/next.png" width="20px">
+                    </div>
+                </div>
+            </div>
+            <div class="rigth_box">
+                <div class="air_con">
+                    <img id="ac_icon" src="img/ac.png" width="70px">
+                    <div>Air Condition</div>
+                    <img src="img/up.png" width="30px" onclick="up_btn()">
+                    <img src="img/down.png" width="30px" onclick="down_btn()">
+                    <div id="count">17&#8451;</div> 
+                </div>
+                <div class="tv">
+                    <img id="tv_icon" src="img/tv.png" width="70px">
+                    <div>TV</div>
+                    <div><img id="btn2" src="img/toggle-off-solid.svg" width="50px"></div>
+                    <div id="onoff2">OFF</div>
+                </div>
+            </div>
+        </div> 
+        </div>
+    </main>
+
+    <footer>     
+        <div class="icon">
+            <div><i id="toggle" i class="fa-solid fa-toggle-on fa-xl"></i></div>
+            <div><i id ="mic" class="fa-solid fa-microphone fa-xl"></i></div>
+            <div><i id="plus" class="fa-solid fa-circle-plus fa-xl"></i></div>
+            <div><i id="video" class="fa-solid fa-video fa-xl"></i></div>
+            <div><i id="chart" class="fa-solid fa-chart-column fa-xl"></i></div>
+        </div>
+    </footer>
+</div>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+ <script src="main1.js"></script>
+</body>
+</html>

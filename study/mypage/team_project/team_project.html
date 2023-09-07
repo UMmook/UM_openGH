@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <script src="https://kit.fontawesome.com/412379eca8.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="team_style.css">
+        <title>Team_Project</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <nav>
+                <div class="header_text">
+                    <span class="material-symbols-outlined">
+                        partly_cloudy_day
+                    </span>
+                    <span>28'C</span>
+                    <span class="profile_name">Kim JinSu</span>
+                    <span class="profile_img"><img src="img/머쓱해요.png"></span>
+                </div>
+                <span class="weather">Today's Weather</span>
+            </nav>
+            <div class="room_title"><h1>Room</h1></div>
+            <div class="room">
+                
+                <div class="room1">
+                    <div class="circle1"></div>
+                    <span><h3>Dinning Room</h3></span>
+                    <p>8 devices</p>
+                </div>
+                <div class="room2">
+                    <div class="circle2"></div>
+                    <span><h3>Office Room</h3></span>
+                    <p>12 devices</p>
+                </div>    
+            </div>
+        </div>
+        
+        <div class="main">
+            <div>
+                <h1>Accessories</h1>
+            </div>
+            <div class="main_1">
+                <div class="main_1_sub" id="box1">
+                    <div class="main_1_center">
+                        <div class="main_1_up">
+                            <span><img src="img/전등.PNG" class="pic1"></span>
+                            <span><img src="img/switch-red.PNG" class="pic2" id="btn1"></span>
+                        </div>
+                    </div>
+                    <div class="main_1_center">
+                        <div class="text_1">
+                            <h2>Outdoor Bulb</h2>
+                            <h4 id="box1_txt1">Off</h4>
+                        </div>
+                        <div id="box1_hid">
+                            <span><img src="img/빛나는전구.png" class="box_pic1" id="btnLight"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_1_sub" id="box2">
+                    <div class="main_1_center">
+                        <div class="main_1_up">
+                            <span><img src="img/에어컨.PNG" class="pic1"></span>
+                            <span><img src="img/switch-red.PNG" class="pic2" id="btn2"></span>
+                        </div>
+                    </div>
+                    <div class="main_1_center">
+                        <div class="text_1">
+                            <h2>Air Condition</h2>
+                            <h4 id="box2_txt1">Off</h4>
+                        </div>
+                        <div id="box2_hid">
+                            <span><img src="img/위로.PNG" class="box_pic2" id="btnTop"></span>
+                            <span id="count"></span><span>'C</span>
+                            <span><img src="img/아래로.PNG" class="box_pic2" id="btnBottom"></span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Speaker -->
+            <div class="main_1">
+                <div class="main_1_sub"  id="box3">
+                    <div class="main_1_center">
+                        <div class="main_1_up">
+                            <span><img src="img/스피커.PNG" class="pic1"></span>
+                            <span><img src="img/switch-red.PNG" class="pic2" id="btn3"></span>
+                        </div>
+                    </div>
+                    <div class="main_1_center">
+                        <div class="text_1">
+                            <h2>Speaker</h2>
+                            <h4 id="box3_txt1">Off</h4>
+                        </div>
+                        <div id="box3_hid">
+                            <div class="music-info">
+                                <h4 id="title">노래 제목</h4>
+                                <div class="progress-container" id="progress-container">
+                                    <div class="progress" id="progress"></div>
+                                </div>
+                            </div>
+                            <audio id="audio" src="music/1.mp3" onloadstart="this.volume=0.05"></audio>
+                            <div class="navigation">
+                                <button id="prev" class="action-btn"><i class="fa-sharp fa-solid fa-backward"></i></button>
+                                <button id="play" class="actiong-btn big"><i class="fa-solid fa-play"></i></button>
+                                <button id="next" class="actiong-btn"><i class="fa-sharp fa-solid fa-forward"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_1_sub"  id="box4">
+                    <div class="main_1_center">
+                        <div class="main_1_up">
+                            <span><img src="img/티비.PNG" class="pic1"></span>
+                            <span><img src="img/switch-red.PNG" class="pic2" id="btn4"></span>
+                        </div>
+                    </div>
+                    <div class="main_1_center">
+                        <div class="text_1">
+                            <h2>TV</h2>
+                            <h4 id="box4_txt1">Off</h4>
+                        </div>
+                        <div id="box4_hid">
+                            <span>&lt;소리: </span><span id="sound"></span><span>&gt;</span>
+                            <span>&lt;채널: </span><span id="channel"></span><span>&gt;</span><br><br>
+
+                            <span><img src="img/위로.PNG" class="box_pic4" id="btnTop2"></span>
+                            <span><img src="img/아래로.PNG" class="box_pic4" id="btnBottom2"></span>
+
+                            <span><img src="img/위로.PNG" class="box_pic4" id="btnTop3"></span>
+                            <span><img src="img/아래로.PNG" class="box_pic4" id="btnBottom3"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+
+        </footer>
+    </body>
+    <script src="team_main.js"></script>
+</html>

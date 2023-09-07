@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kim JinSu</title>
+        <style>
+            * {
+                /* li 기호 제거 */
+                list-style: none;
+                /* text 밑줄 제거 */
+                text-decoration: none;
+                /* 표 테두리 간격 제거 */
+                border-collapse: collapse;
+                /* background 이미지 포함 여백 제거 */
+                margin: 0px;
+                padding: 0px;
+            }
+            /* Header */
+            .header_bg {
+                background-image: url('img/카양겔.png');
+                background-size: cover;
+                width: 100%;
+                height: 700px;
+            }
+            .header {
+                display: flex;
+                width: 1280px;
+                margin: auto;
+                height: 100px;
+            }
+            .header_logo {
+                width: 180px;
+                height: 180px;
+            }
+            .header_home {
+                padding: 10px;
+                margin: 0 auto;
+                font-size: 30px;
+            }
+            .header_nav {
+                display: flex;
+                justify-content: flex-end;
+                line-height: 50px;
+                width: 1000px;
+                text-align: center;
+            }
+            .header_nav li {
+                width:100%;
+            }
+            .header_nav li a {
+                color: white;
+                font-weight: bold;
+            }
+            .header_text {
+                width:100%;
+                margin: 230px auto 230px auto; /* 상 우 하 좌 */
+                color: antiquewhite;
+                text-align: center;
+                text-shadow: 10px 10px 5px black;
+            }
+            .header_text h3 {
+                margin-top: 70px;
+                color: greenyellow;
+                text-shadow: 10px 10px 5px black;
+            }
+            /* Skill */
+            .skill {
+                display: flex;
+                position: relative;
+                top:-66px;
+                width:1280px;
+                background: white;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /*그림자 처리*/
+                margin: auto;
+            }
+            .skill li {
+                flex: 1;
+                height: 130px;
+            }
+            .skill li div {
+                text-align: center;
+                margin-top: 40px;
+                height: 60px;
+            }
+            .skill_title {
+                font-size: 30px;
+                font-weight: bold;
+            }
+            .skill li:not(:last-child) div {
+                /* 마지막 li를 제외한 li에 오른쪽 black 실선 생성 */
+                border-right: 1px solid black;
+            }
+            /* Main */
+            .main {
+                margin-top: -65px;
+                background-color: antiquewhite;
+            }
+            .main_1 {
+                display: flex;
+                width: 100%;
+                height: 500px;
+            }
+            .sub_img {
+                margin-left: 100px;
+            }
+            .main_1_sub {
+                width: 50%;
+                height: 500px;
+                border: 1px solid gray;
+            }
+            .main_1_sub h1 {
+                text-align: center;
+                margin-top: 30px;
+            }
+            .sub_text {
+                text-align: start;
+                margin-left: 150px;
+                margin-top: 40px;
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 50px;
+                color: brown;
+            }
+            /* Footer */
+            footer {
+                display: flex;
+                background: black;
+                padding: 30px;
+                font-weight: 100;
+            }
+            .footer_text {
+                margin-left: 100px;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="intro">
+            <div class="header_bg">
+                <div class="header">
+                    <div class="header_logo">
+                        <img src="img/놀자에요.png">
+                    </div>
+                    <div class="header_home">
+                        <ul class="header_nav">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Introduce</a></li> <!--인적 자격 경력-->
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Hope</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header_text">
+                    <h1>Kim JinSu</h1>
+                    <h3>
+                        김진수의 페이지에 오신 걸 환영합니다!<br>
+                        가벼운 소개 페이지입니다~
+                    </h3>
+                </div>
+            </div>
+
+            <ul class="skill">
+                <li>
+                    <div class="skill_title">HTML</div>
+                </li>
+                <li>
+                    <div class="skill_title">CSS</div>
+                </li>
+                <li>
+                    <div class="skill_title">JavaScript</div>
+                </li>
+                <li>
+                    <div class="skill_title">JQuery</div>
+                </li>
+            </ul>
+
+            <div class="main">
+                <div class="main_1">
+                    <div class="main_1_sub">
+                        <h1>인적사항</h1>
+                        <div class="sub_text">
+                            <p>
+                                이름 : 김 진수 <br>
+                                생년월일 : 1997. 11. 03 <br>
+                                주소 : 경기도 안산시
+                            </p>
+                        </div>
+                    </div>
+                    <div class="main_1_sub">
+                        <h1>학력사항</h1>
+                        <div class="sub_text">
+                            <p>
+                                대학교 : 신한대학교 졸업 <br>
+                                학과 : IT 융합공학과 <br>
+                                전공 : 컴퓨터 전공
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_1">
+                    <div class="main_1_sub">
+                        <h1>자격증</h1>
+                        <div class="sub_text">
+                            <p>
+                                ITQ OA Master <br>
+                                정보처리 기능사 <br>
+                                정보처리 기사
+                            </p>
+                        </div>
+                    </div>
+                    <div class="main_1_sub">
+                        <h1>프로젝트 경력</h1>
+                        <div class="sub_text">
+                            <p>
+                                22년도 7개월간 <br>
+                                현대모비스 프로젝트 Front-end로 참여
+                            </p>
+                        </div>
+                        <div class="sub_img">
+                            <img src="img/머쓱해요.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div>
+                    <img src="img/모야호.png" width="200" height="120">
+                </div>
+                <div class="footer_text">
+                    고객센터 : 없습니다 <br>
+                    전화번호 : 010 - 0000 - 0000 <br>
+                    이메일 : mook3103@naver.com <br><br>
+                    
+                    Kim JinSu's page.
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

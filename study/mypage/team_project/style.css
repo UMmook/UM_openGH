@@ -1,0 +1,350 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Bold";
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove the fade-in class for immediate visibility */
+.rooms.fade-in {
+  opacity: 1;
+}
+/* Adjust the padding or margin of your content to avoid overlapping with the fixed navigation */
+.wrapper {
+  margin-top: 60px;
+  padding-top: 90px;
+  padding-bottom: 150px;
+  margin-bottom: 400px;
+  width: 100vw;
+  height: 100vh;
+  @media (max-width: 768px) {
+    margin-bottom: 500px;
+  }
+  animation: fadein 3s;
+}
+@keyframes colorChange {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@font-face {
+  font-family: "apple";
+  src: url("/fonts/Apple\ SD\ Gothic\ Neo\ Bold.ttf");
+}
+@font-face {
+  font-family: "Bold";
+  src: url("/fonts/SFNSDisplay-Bold.otf");
+}
+.time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+}
+.time > span {
+  margin-left: 15px;
+  margin-top: 10px;
+}
+.time > div > img {
+  margin-right: 5px;
+  margin-top: 10px;
+}
+.time > div > img:first-child {
+  width: 16px;
+  height: 16px;
+}
+.weather {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin-left: 10px;
+  
+}
+.weather > span {
+  font-size: 1.5rem;
+  color: rgba(128, 128, 128, 0.589);
+  margin-left: 15px;
+}
+
+.weather img {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.weather-description {
+  margin-top: auto;
+  font-size: 0.5rem;
+}
+.push-right {
+  margin-left: auto;
+}
+.text-C {
+  text-align: center;
+}
+.L {
+  font-size: 2rem;
+  margin-left: 10px;
+}
+.M {
+  font-size: 1.5rem;
+}
+.S {
+  font-size: 0.5rem;
+}
+.box {
+  margin-top: 15px;
+  height: 15px;
+  background-color: #fffafa;
+  position: relative;
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px; /* Adjust the height to control the thickness of the blurred border */
+  background: linear-gradient(
+    to right,
+    transparent,
+    transparent,
+    #e9e9e9,
+    transparent,
+    transparent
+  );
+  filter: blur(20px); /* Adjust the blur radius as needed */
+}
+
+.contents {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  place-items: center;
+}
+.circle {
+  width: 80px; /* Set the width and height to control the size of the circle */
+  height: 80px;
+  background-color: white; /* Set the background color of the circle */
+  border-radius: 50%; /* Make the div a circle */
+  cursor: pointer;
+}
+.circle > img {
+  margin-top: 15px;
+}
+.contents > div > p {
+  font-size: 1.5rem;
+  margin: 0px;
+  margin-top: 10px;
+}
+.contents > div > p:nth-child(3) {
+  font-size: 1.2rem;
+  color: rgba(128, 128, 128, 0.555);
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+}
+
+.Favorite-contents {
+  display: flex;
+  align-items: center;
+  height: 8rem;
+  width: 80%;
+  border-radius: 12px;
+  background-color: #fffafa;
+  padding: 0 10px; /* 텍스트가 오른쪽 끝에 배치되도록 패딩 추가 */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  justify-content: space-between; /* 텍스트를 오른쪽 끝으로 배치합니다 */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.Favorite-contents > img {
+  margin-right: 10px;
+  max-height 100%;
+  margin-left 20px;
+}
+
+.Favorite-contents > span,
+.Favorite-contents > p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.5rem;
+}
+.Favorite-contents::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.inline {
+  display: inline;
+}
+.square {
+  width: 80%;
+  margin-top: 15px;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.purple {
+  background-color: rgb(134, 29, 231);
+}
+.yellow {
+  background-color: #fcebe0;
+}
+.green {
+  background-color: rgb(208, 255, 208);
+}
+.blue {
+  background-color: rgb(220, 245, 255);
+}
+.rooms-contents {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.room-h1 > span {
+  float: right; /* span을 오른쪽으로 이동시킵니다 */
+  clear: both; /* float된 요소 뒤에 clear를 추가합니다 */
+  margin-right: 20px;
+  color: rgba(128, 128, 128, 0.555);
+}
+.rooms-contents {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  text-align: center;
+  place-items: center;
+  width: 100%;
+  grid-row-gap: 15px;
+  cursor: pointer;
+}
+.square > div {
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.square > p {
+  margin: 5px;
+}
+.cw {
+  color: white;
+}
+.cb {
+  color: black;
+}
+.square > p:last-child {
+  margin-bottom: 30px;
+}
+
+.Accessories-room {
+  width: 80%;
+  height: 14rem;
+  margin-top: 15px;
+  border-radius: 25px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Accessories-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Accessories-flex img {
+  width: 40px;
+  padding: 10px;
+}
+
+.Accessories-room > div > p {
+  font-size: 1.5rem;
+  margin: 0px;
+  margin-top: 10px;
+}
+
+.footer > div {
+  border-top: 1px solid #ffefef;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+.footer > div > img {
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+}
+.blue2 {
+  background-color: rgb(225, 245, 253);
+}
+.yellow2 {
+  background-color: rgb(255, 255, 224);
+}
+.green2 {
+  background-color: rgb(230, 255, 230);
+}
+.purple2 {
+  background-color: rgb(255, 238, 255);
+}
+
+.animatable {
+  visibility: hidden;
+  animation-play-state: paused;
+}
+
+/*화면에 표출된 후*/
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

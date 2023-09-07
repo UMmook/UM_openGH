@@ -1,0 +1,158 @@
+
+body{
+    font-family: 'Poppins', sans-serif;
+    color : gray;
+    margin: 0;
+
+}
+
+.container{
+    width: 500px;
+    height: 100vh;
+}
+
+
+/* 상단 네브바 */
+.nav_container{
+    display: flex;
+    justify-content: space-between;    
+    background-color: whitesmoke;
+}
+
+.nav_icon {
+    justify-content: space-between;
+}
+
+
+.profile{
+    border-radius: 100%; 
+}
+
+.textArea {
+  color: gray;
+  padding-left: 20px;
+}
+
+/* 상단 룸 박스 */
+
+.room{
+    display: flex;
+    justify-content: space-around;
+    background-color: whitesmoke;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius : 20px;
+    
+}
+.dining{
+    width : 200px;
+    height : 200px;
+    background-color: rgb(255, 239, 241);
+    border-radius: 20%;
+    text-align: center;
+    align-items: center;
+    text-decoration: bold;
+}
+
+.dining_wrap{
+    margin-top: 40px
+}
+
+.office{
+    width : 200px;
+    height : 200px;
+    background-color: rgb(247, 229, 212);
+    border-radius: 20%;
+    text-align: center;
+}
+.office_wrap{
+    margin-top: 40px;
+}
+
+/* Aeecssories 부분 */
+
+.textArea2 {
+    font-size: x-large;
+    color: gray;
+    padding-left: 20px;
+}
+
+.main{
+    background-color: whitesmoke;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.main_container{
+    display: flex;
+    justify-content: space-around;
+    background-color: whitesmoke;
+
+}
+
+.outdoor{
+    width : 200px;
+    height : 200px;
+    background-color: rgb(237, 235, 235);
+    border-radius: 20%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#outdoor_icon{
+    margin-top: 20px;
+}
+
+.air_con{
+    width : 200px;
+    height : 200px;
+    background-color: rgb(219, 207, 230);
+    border-radius: 20%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#ac_icon{
+    margin-top: 20px;
+}
+
+.speaker{
+    width : 200px;
+    height : 200px;
+    background-color: rgb(255, 221, 208);
+    border-radius: 20%;
+    text-align: center;
+}
+#speaker_icon{
+    margin-top: 20px;
+}
+
+.tv{
+    width : 200px;
+    height : 200px;
+    background-color: linen;
+    border-radius: 20%;
+    text-align: center;
+}
+
+#tv_icon{
+    margin-top: 20px;
+}
+
+.icon{
+    height: 80px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.music_c img{
+    display: inline;
+    justify-content: space-around;
+    margin: 15px;
+    
+
+}
