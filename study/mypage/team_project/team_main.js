@@ -83,47 +83,46 @@ loadSong(music[text_music]);
 function loadSong(song) {
     title.innerText = song;
     audio.src = `music/${song}.mp3`;
-  }
+}
   
-  function playMusic() {
+function playMusic() {
     musicContainer.classList.add("play");
   
     playBtn.innerHTML = `<i class="fa-solid fa-pause"></i>`;
   
     audio.play();
-  }
+}
   
-  function pauseMusic(){
-      musicContainer.classList.remove('play');
-      playBtn.innerHTML = `<i class="fa-solid fa-play"></i>`;
+function pauseMusic(){
+    musicContainer.classList.remove('play');
+    playBtn.innerHTML = `<i class="fa-solid fa-play"></i>`;
   
-      audio.pause();
-  }
+    audio.pause();
+}
   
-  function playPrevSong() {
+function playPrevSong() {
     text_music--;
   
-      if (text_music < 0) {
+    if (text_music < 0) {
         text_music = songs.length - 1;
-      }
+    }
     
-      loadSong(music[text_music]);
-    
-      playMusic();
-  }
+    loadSong(music[text_music]);
+    playMusic();
+}
   
-  function playNextSong (){
+function playNextSong (){
     text_music++;
   
-      if(text_music > 4){
+    if(text_music > 4){
         text_music = 0;
-      }
+    }
   
-      loadSong(music[text_music]);
-      playMusic();
-  }
+    loadSong(music[text_music]);
+    playMusic();
+}
 
-  function updateProgress(e){
+function updateProgress(e){
     const {duration, currentTime} = e.srcElement;
 
     const progressPer = (currentTime / duration) * 100;

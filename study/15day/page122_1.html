@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container">
+            <div id="toolbar">
+                <button id="confirm">확인</button>
+                <button id="reset">지우기</button>
+
+                <input type="color" name="color" id="color_picker"><br>
+                <button id="color_sel">색상 적용</button>
+            </div>
+            <canvas id="canvas">
+                
+            </canvas>
+        </div>
+        <script>
+            const canvas = document.getElementById("canvas");
+            const toolbar = document.getElementById("toolbar");
+            const color_picker = document.getElementById("color_picker");
+
+            const ctx = canvas.getContext('2d');
+            let color = "red";
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight-toolbar.offsetHeight;
+
+            toolbar.addEventListener("click", (event) => {
+                if(event.target.id == "reset") {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                } else if (event.target.id == "confirm") {
+                    alert("사인이 저장 되었습니다.");
+                } else if (event.target.id == "color_sel") {
+                    color = color_picker.value;
+                }
+            })
+
+            let isDrawing = false;
+            
+            canvas.addEventListener("mousedown", (event) => {
+                isDrawing = true;
+            });
+            canvas.addEventListener("mouseup", (event) => {
+                isDrawing = false;
+                ctx.beginPath();
+            });
+            canvas.addEventListener("mousemove", (event) => {
+                if (isDrawing == true) {
+                    // ctx.beginPath();
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = 2;
+                    ctx.lineTo(event.clientX, event.clientY);
+                    ctx.stroke();
+                }
+            });
+        </script>
+    </body>
+</html>

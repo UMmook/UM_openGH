@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>객체</h1>
+        <p>객체 : 프로퍼티(값) + 메소드(행동)</p>
+        <p>내장 객체(교재: Date, Math, Window, etc...) vs 사용자 정의 객체</p>
+        <p>프로퍼티 = 키 : 값</p>
+        <p>객체는 { , , }로 구성한다.</p>
+        <p>객체 중 키는 문자열, 숫자, 심볼 등...</p>
+        <p>var student = { stu_name:"김진수", gpa: 4.5 }</p>
+        <p>객체의 값에 접근: student.gpa ; student["stu_name"]</p>
+        <p>프로퍼티 수정 : student.gpa = 4.0;</p>
+        <p>프로퍼티 추가 : student.major = "CE";</p>
+        <p>프로퍼티 삭제 : delete student.major;</p>
+        <p>빈 객체 생성 : var person = { }; var person = new Object();</p>
+
+        <h1>객체 중첩</h1>
+        <script>
+            let student = {
+                name: "김진수",
+                score: {
+                    com_sturuct: 93,
+                    operating_system: 95
+                }
+            };
+        </script>
+
+        <h1>객체 메서드</h1>
+        <script>
+            let student_method = {
+                name: "서호준",         // student.name
+                score: {
+                    com_sturuct: 93,    // student.score.com_struct
+                    operating_system: 95,
+                    average:function() {
+                        console.log( (this.com_sturuct + this.operating_system)/2 );
+                        // student_method.score.average()
+                    }
+                }
+            };
+        </script>
+
+        <h1>복사 : 값 vs 참조</h1>
+        <script>
+            let num1 = 100;
+            let num2 = num1;
+            num2 = 200;
+
+            // 얕은 복사 (shallow copy)
+            let bag1 = {color:"red", size:100};
+            let bag2 = bag1;
+            bag2.color = "blue";
+
+            let bag3 = JSON.parse(JSON.stringify(bag1))
+            bag3.color = "green";
+        </script>
+
+        <h1>객체 - 생성자 함수</h1>
+        <script>
+            function Book(title, pages, done = false) {
+                // 프로퍼티 들
+                this.title = title;
+                this.pages = pages;
+                this.done = done;
+                // 메소드
+                this.finish = function() {
+                    let str = "";
+                    this.done === false ? str = "읽고 있어요" : str = "다 읽었어요";
+                    return str;
+                }
+            }
+
+            let book1 = new Book("김진수의 HTML 이해하기", 100, false);
+            let book2 = new Book("김진수의 CSS 이해하기", 200, true);
+        </script>
+
+        <h1>객체 - 클래스 사용 (ES6 규격)</h1>
+        <script>
+            class Book2 {
+                constructor(title, pages, done) {
+                    // 프로퍼티 들
+                    this.title = title;
+                    this.pages = pages;
+                    this.done = done;
+                }
+                // 메소드
+                finish() {
+                    let str = "";
+                    this.done === false ? str = "읽고 있어요" : str = "다 읽었어요";
+                    return str;
+                }
+            }
+            let book3 = new Book("김진수의 HTML 이해하기", 101, false);
+            let book4 = new Book("김진수의 CSS 이해하기", 201, true);
+        </script>
+
+        <h1>Example - 원 넓이 구하는 객체</h1>
+        <p>객체 이름: CircleArea</p>
+        <p>프로퍼티: 원 넓이, 반지름</p><!--원 넓이 = PI * r*2 -->
+        <p>메소드: 원 넓이를 구해서 출력한다.</p>
+        <p>반지름 1to10 10개의 반지름을 갖는 원의 넓이를 구해보자</p>
+        <script>
+            function CircleArea(radius) {
+                // 프로퍼티 들
+                this.area = 0;
+                this.radius = radius;
+                // 메소드
+                this.getArea = function() {
+                    this.area = Math.PI * this.radius * this.radius;
+                    return this.area;
+                }
+            }
+            let circleArray = new Array(10);
+            for (let i=0; i<10; i++) {
+                circleArray[i] = new CircleArea(i+1);
+                console.log(`반지름: ${i+1} 일 때 원의 넓이 : ${circleArray[i].getArea()}`);
+            }
+            
+            class CircleArea2 {
+                constructor(radius) {
+                    this.area = 0;
+                    this.radius = radius;
+                }
+                getArea() {
+                    this.area = Math.PI * this.radius * this.radius;
+                    return this.area;
+                }
+            }
+            let circleArray2 = new Array(10);
+            for (let i=0; i<10; i++) {
+                circleArray2[i] = new CircleArea2(i+1);
+                console.log(`반지름: ${i+1} 일 때 원의 넓이 : ${circleArray2[i].getArea()}`);
+            }
+        </script>
+
+        <h1>Example - 자동차</h1>
+        <p>객체 이름: Car</p>
+        <p>프로퍼티: speed</p>
+        <p>메소드: run</p>
+        <p>동작 예시 : 자동차를 시작했더니 슬슬슬 앞으로 간다.</p>
+        <script>
+            class Car {
+                constructor() {
+                    this.speed = 0;
+                }
+                run() {
+                    this.speed = 10;
+                    console.log(`현재속도: ${this.speed}km`);
+                }
+                break() {
+                    this.speed = 0;
+                    console.log(`현재속도: ${this.speed}km`);
+                }
+                accel() {
+                    this.speed += 10;
+                    console.log(`현재속도: ${this.speed}km`);
+                }
+            }
+            let myCar = new Car();
+            myCar.run();
+
+            class Knight {
+                constructor() {
+                    this.healthPoint = 100;      // 체력
+                    this.shieldPower = 1;    // 방어력 (1, 2, 3)
+                    this.speed = 1;     // 이동속도
+                    this.attackPower = 1;    // 공격력
+                }
+                drinkShieldPotion() {   // 방어력 높이는 물약
+                    this.shieldPower += 1;
+                }
+                guard_mega() {
+                    this.is_death();
+                }
+                guard() {               // 일반 공격을 맞는다
+                    let damage = 10 - this.shieldPower * 3;
+                    if (damage < 0) { damage = 0; }
+                    this.healthPoint -= damage;
+                    console.log("hp = " + this.healthPoint);
+                    this.is_death();
+                }
+                is_death() {               // 죽음
+                    if (this.healthPoint <= 0) {
+                        console.log("exitGame()을 호출");
+                        alert("죽으셨습니다.");
+                    }
+                }
+                attack() {              // 공격한다
+
+                }
+            }
+            let k1 = new Knight();
+            // k1.guard();
+            // k1.drinkShieldPotion();
+        </script>
+
+        <h1>for in 구문</h1>
+        <script>
+            let friend = {
+                name: "김진수",
+                where:"멀티캠퍼스",
+                relation:"학생"
+            }
+            for (key in friend) {
+                console.log(key + ": " + friend[key]);
+            }
+            console.log(Object.keys(friend));       // friend 객체에서 key만 추출
+            console.log(Object.values(friend));     // friend 객체에서 values만 추출
+            console.log(Object.entries(friend));    // friend 객체에서 key와 values 추출
+        </script>
+    </body>
+</html>
