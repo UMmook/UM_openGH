@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+.weather {
+  margin: 10px;
+}
+
+.weather i {
+  float: left;
+  margin-top: 10px;
+  margin-right: 10px;
+  size: 100px;
+}
+
+.degree {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.weather-txt {
+  color: rgba(128, 128, 128, 0.432);
+  font-size: 14px;
+}
+
+.profile {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  color: rgba(128, 128, 128, 0.877);
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.func {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.Fron-door {
+  float: left;
+  color: rgba(0, 110, 255, 0.747);
+}
+
+.Lights {
+  float: left;
+  color: rgba(255, 123, 0, 0.774);
+}
+
+.Cameras {
+  float: left;
+  color: rgb(147, 238, 144);
+}
+
+.WiFi {
+  color: rgba(137, 43, 226, 0.87);
+}
+
+.circles {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -60px;
+}
+
+.circle1 {
+  background-color: rgba(0, 110, 255, 0.158);
+  float: left;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+}
+
+.circle2 {
+  background-color: rgba(255, 123, 0, 0.233);
+  float: left;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+}
+
+.circle3 {
+  background-color: rgba(147, 238, 144, 0.418);
+  float: left;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+}
+
+.circle4 {
+  background-color: rgba(137, 43, 226, 0.205);
+  float: left;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+}
+
+.func-txt {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-left: -30px;
+}
+
+.func-prpt {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -30px;
+  margin-left: -10px;
+}
+
+.func-prpt p {
+  color: rgba(128, 128, 128, 0.514);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 50% 50%; /* 가로 길이 */
+  grid-template-rows: 250px 250px 250px; /* 세로 길이 */
+  gap: 10px;
+  column-gap: 20px;
+  row-gap: 30px;
+  margin: 50px;
+}
+
+.scenes {
+  font-size: 26px;
+  margin-top: 70px;
+  margin-left: 30px;
+}
+
+.container {
+  margin-top: -10px;
+}
+
+.morning,
+.arrive,
+.leave,
+.night {
+  border-radius: 25px;
+}
+
+.morning,
+.arrive,
+.leave,
+.night {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+}
