@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>디자인 패턴 (design pattern)</h1>
+        <p>디자인 - 시각적 배치/효과</p>
+        <p>디자인 - 설계</p>
+        <div>
+            <p>GoF 패턴 (자바)</p>
+            <div>
+                <h1>생성 패턴</h1>
+                    <h2>Constructor</h2>
+                    <h2>Factory</h2>
+                    <p>객체(자동차)를 만들 때 생성을 담당하는 객체(공장)를 별도로 둔다.</p>
+                    <script>
+                        class Sonata {
+                            constructor() {}
+                            whoareyou() {console.log("난 소나타이다.");}
+                        }
+                        class K5 {
+                            constructor() {}
+                            whoareyou() {console.log("난 K5다.");}
+                        }
+                        // direct 생성
+                        let myCar1 = new Sonata();
+                        myCar1.whoareyou();
+                        let myCar2 = new K5();
+                        myCar2.whoareyou();
+
+                        class CarFactory {
+                            constructor(){}
+                            make(car_name) {
+                                switch(car_name) {
+                                    case 'sonata':
+                                        return new Sonata();
+                                    case 'k5':
+                                        return new K5();
+                                    default:
+                                        return null;
+                                }
+                            }
+                        }
+                        const koreanCarFactory = new CarFactory();
+                        let my_car1 = koreanCarFactory.make('sonata');
+                        let my_car2 = koreanCarFactory.make('k5');
+                        my_car1.whoareyou();
+                        my_car2.whoareyou();
+
+                    </script>
+                    <h2>Abstract Factory</h2>
+                    <h2>Prototype</h2>
+                    <p>템플릿 기반, clone(상속)</p>
+                    <script>
+                        class Car_proto {
+                            constructor(wheels) {
+                                this.no_of_wheels = wheels;
+                            }
+                            start() {
+                                return `start ${this.no_of_wheels}`
+                            }
+                            stop() {
+                                return `stop ${this.no_of_wheels}`
+                            }
+                        }
+                        const car_proto = new Car_proto(4);
+                        const clone_car_1 = Object.create(car_proto, {owner:{value:"HJ_1"}});
+                        const clone_car_2 = Object.create(car_proto, {owner:{value:"HJ_2"}});
+                    
+                        // clone_car_1.__proto__;
+                        // clone_car_1.start();
+                        // clone_car_1.stop();
+                        // clone_car_1.no_of_wheels
+                    </script>
+                    <h2>Singleton</h2>
+                    <p>하나의 객체를 만든다</p>
+                    <script>
+                        class Car {
+                            constructor(wheels) {
+                                this.wheels = wheels;
+                            }
+                            setWheels(wheels) {
+                                this.wheels = wheels;
+                            }
+                        }
+                        const Singleton = {
+                            instance : null,
+                            getInstance(parameter) {
+                                if(!this.instance) {
+                                    this.instance = new Car(parameter);
+                                }
+                                return this.instance;
+                            }
+                        }
+                        let car_sedan_new = new Car(4);
+                        let car_3w_autobicycle_new = new Car(3);
+                        let car_2w_autobicycle_new = new Car(2);
+
+                        let car_sedan_single = Singleton.getInstance(4);
+                        let car_3w_autobicycle_single = Singleton.getInstance(3);
+                        let car_2w_autobicycle_single = Singleton.getInstance(2);
+
+                        console.log(car_sedan_new.wheels, 
+                                    car_3w_autobicycle_new.wheels, 
+                                    car_2w_autobicycle_new.wheels);
+
+                        console.log(car_sedan_single.wheels,
+                                    car_3w_autobicycle_single.wheels,
+                                    car_2w_autobicycle_single.wheels);
+
+                        car_3w_autobicycle_new.setWheels(1);
+                        console.log(car_sedan_new.wheels, 
+                                    car_3w_autobicycle_new.wheels, 
+                                    car_2w_autobicycle_new.wheels);
+
+                        car_3w_autobicycle_single.setWheels(1);
+                        console.log(car_sedan_single.wheels,
+                                    car_3w_autobicycle_single.wheels,
+                                    car_2w_autobicycle_single.wheels);
+                    </script>
+                    <h2>Builder</h2>
+                <h1>구조 패턴</h1>
+                    <h2>Adapter</h2>
+                    <h2>Bridge</h2>
+                    <h2>Composite</h2>
+                    <h2>Decorator</h2>
+                    <h2>Facade</h2>
+                    <h2>Flyweight</h2>
+                    <h2>Proxy</h2>
+                <h1>행동 패턴</h1>
+                    <h2>Chain of Responsibility</h2>
+                    <h2>Command</h2>
+                    <h2>Iterator</h2>
+                    <h2>Mediator</h2>
+                    <h2>Memento</h2>
+                    <h2>Observer</h2>
+                    <h2>State</h2>
+                    <h2>Strategy</h2>
+                    <h2>Template method</h2>
+                    <h2>Visitor</h2>
+            </div>
+        </div>
+        
+        <p>JS 프로토타입</p>
+    </body>
+</html>
