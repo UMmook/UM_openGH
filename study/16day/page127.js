@@ -142,11 +142,10 @@ const student = {
 let s_name = student.name;
 let gpa = student["gpa"];
 console.log(s_name + "/" + gpa);
-/*
-let s_name2, gpa2;
-{s_name2, gpa2} = {
+
+
+let {s_name2, gpa2} = {
     s_name2: "김진수",
     gpa2: 4.5
 };
 console.log(s_name2 + "/" + gpa2);
-*/

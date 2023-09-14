@@ -1,0 +1,23 @@
+현재 설치된 가상 환경 목록을 본다
+conda env list
+
+3.8버전 mulcam3에 파이썬 설치
+conda create -n mulcam3 python==3.8
+
+mulcam3 activate로 접속
+conda activate mulcam3
+
+해당 activate 삭제
+conda deactivate
+
+현재 가상환경에 설치된 패키지 상황을 본다
+conda list
+
+쥬피터 노트북 설치
+conda install jupyter notebook
+
+쥬피터 노트북 열기
+jupyter notebook
+
+쥬피터 노트북 닫을때
+[컨트롤 + c] <---- 2~3번
