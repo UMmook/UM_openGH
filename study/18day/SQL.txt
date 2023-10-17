@@ -1,0 +1,17 @@
+SQL DB
+
+DB 리스트는 [ show databases; ]를 통하여 확인 가능
+각 테이블은 [ show tables; ]를 통하여 확인 가능
+
+shopdb
+ - membertbl
+
+bookstore
+ - aiTest
+ - book
+ - customer
+ - orders
+
+sqldb
+ - usertbl
+ - buytbl

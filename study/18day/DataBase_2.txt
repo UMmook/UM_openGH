@@ -1,0 +1,333 @@
+231017 - DB
+
+P203
+
+use sqldb;
+
+select * from usertbl;
+
+select name, height from usertbl;
+
+select name, height from usertbl where height >= (select height from usertbl where addr='경남'); -> 10명
+select name, height from usertbl where height >= 170, 173;
+
+select name, height from usertbl where height >= any(select height from usertbl where addr='경남'); -> 9명 any = (170 <= x or 173 <= x)
+select name, height from usertbl where height >= all(select height from usertbl where addr='경남'); -> 7명 all = (170 <= x and 173 <= x)
+select name, height from usertbl where height >= some(select height from usertbl where addr='경남');
+
+select name, height from usertbl where height = any(select height from usertbl where addr='경남'); (170 = x or 173 = x)
+select name, height from usertbl where height in(select height from usertbl where addr='경남'); (170 = x or 173 = x)
+
+select name, height from usertbl;
+
+select name, height from usertbl where height in(select height from usertbl where addr='경남') order by height;
+select name, height from usertbl where height in(select height from usertbl where addr='경남') order by height desc;
+select name, height from usertbl where height in(select height from usertbl where addr='경남') order by height asc;
+
+select addr from usertbl;
+
+select distinct addr from usertbl;
+
+select * from usertbl;
+
+select * from usertbl limit 5;
+
+select * from usertbl limit 2, 5;
+
+select * from buytbl;
+
+create table itemlist (select distinct prodName from buytbl);
+
+select * from itemlist;
+
+select * from buytbl;
+
+select avg(amount) from buytbl;
+
+select avg(amount) as 평균구매개수 from buytbl;
+
+select avg(amount) as '평균 구매 개수' from buytbl;
+
+select sum(price*amount) as '오늘 매출' from buytbl;
+
+select sum(price*amount) as '오늘 상품별 매출' from buytbl group by prodName;
+
+select prodName as 상품명, sum(price*amount) as '오늘 상품별 매출' from buytbl group by prodName;
+
+select avg(amount) from buytbl;
+
+select count(amount) from buytbl;
+
+select count(*) from buytbl;
+
+select count(groupName) from buytbl;
+
+select userID, sum(price*amount) from buytbl group by userID;
+
+where 단수, having 복수
+
+select userID, sum(price*amount) from buytbl where sum(price*amount) >= 1000 group by userID;
+select userID, sum(price*amount) from buytbl group by userID having sum(price*amount) >= 1000;
+
+
+use bookstore;
+
+select * from orders;
+
+고객별 주문 도서 총 수량 (단, saleprice 8000원 이상인 주문 건, 두권 이상 주문한 고객에 대하여)
+
+custid  권수
+1	2
+3	2
+4	2
+
+select custid, count(*) as '권 수' from orders where saleprice >= 8000 group by custid;
+
+select custid, count(*) as '권 수' from orders 
+where saleprice >= 8000 
+group by custid 
+having count(*) >= 2;
+
+==> select custid, count(*) as '권 수' / from orders / where saleprice >= 8000 / group by custid / having count(*) >= 2;
+SELECT / FROM / WHERE / GROUP BY / HAVING
+
+use sqldb;
+select * from buytbl;
+
+select groupName, sum(price*amount) from buytbl group by groupName;
+
+select groupName, sum(price*amount) from buytbl group by groupName with rollup;      ==> with rollup (총합 추가)
+
+Q. 구기 종목 ("~구") 도서 중에서, 만원 대 책을 조회해보자
+
+책 이름 | 정가 (price)
+~~	~~
+~~	~~
+~~	~~
+
+select bookname as '책 이름', price as '정가 (price)' from book;
+select bookname as '책 이름', price as '정가 (price)' from book where bookname like '_구%'
+select bookname as '책 이름', price as '정가 (price)' from book where bookname like '_구%' and price >= 10000;
+select bookname as '책 이름', price as '정가 (price)' from book where bookname like '_구%' and price >= 10000 and price < 20000;
+
+Q. 2번 고객이 주문한 도서의 총 판매액 (saleprice)
+
+총 판매액
+15000
+
+select sum(saleprice) as '총 판매액' from orders where custid=2;
+
+Q. 가장 비싼 책의 이름?
+
+bookname
+골프바이블
+
+select bookname from book where price = (select max(price) from book);
+
+-------------------------------------------------------------------------------------
+
+create table insertTest(
+    col1 integer,
+    col2 varchar(10),
+    col3 varchar(20)
+);
+
+desc insertTest;
+
+insert into insertTest values(1, 'abc', 'abcde');
+
+insert into insertTest(col1, col2, col3) values(2, 'abc', 'abcde');
+
+insert into insertTest(col1, col3) values(3, 'abcde');
+
+drop table insertTest;
+
+-------------------------------------------------------------------------------------
+
+create table aiTest(
+    col1 integer auto_increment primary key,
+    col2 varchar(10),
+    col3 varchar(20)
+);
+
+insert into aiTest values(NULL, 'abc', 'ㄱㄴㄷ');
+
+select last_insert_id();  // 마지막 데이터 값
+
+alter table aiTest auto_increment = 100;  // 데이터를 넣으면 100부터 시작한다
+
+insert into aiTest values(NULL, 'abc', 'ㄱㄴㄷ');
+
+set @@auto_increment_increment = 3;  // 데이터를 넣을때 간격을 3으로 한다. @@ ==> SQL의 변수 형태
+
+insert into aiTest values(NULL, 'abc', 'ㄱㄴㄷ');
+
+set @@auto_increment_increment = 1;  // 테스트 후에는 다시 간격을 1로 변경.
+
+insert into aiTest values(NULL, 'abc', 'ㄱㄴㄷ'), (NULL, 'abc', 'ㄱㄴㄷ'), (NULL, 'abc', 'ㄱㄴㄷ');
+// 데이터만 추가로 넣는 경우 이렇게도 사용가능
+
+update aiTest set col3 = '가나다';
+
+update aiTest set col3 = '가나다라' where col1 = 112;
+
+delete from aiTest where col1 = 113;
+delete from aiTest where col1 = 114;
+
+insert into aiTest values(NULL, 'abc', 'ㄱㄴㄷ');
+delete from aiTest where col1 = 115;
+
+alter table aiTest auto_increment = 113;
+
+insert into aiTest values(115, 'abc', 'ㄱㄴㄷ');
+insert into aiTest values(116, 'abc', 'ㄱㄴㄷ');
+insert into aiTest values(117, 'abc', 'ㄱㄴㄷ');
+
+insert ignore into aiTest values(117, 'abc', 'ㄱㄴㄷ');  // ignore : 문제가 되지않는 한에서 실행 [중복이 될 시 해당 문장 무시]
+insert ignore into aiTest values(118, 'abc', 'ㄱㄴㄷ');
+
+insert into aiTest values(118, 'abc', 'ㄱㄴㄷ')
+on duplicate key update col2 = 'abcd', col3 = 'ㄱㄴㄷㄹ';  // 118를 추가하지만 중복이 있는 경우에는 업데이트만 실행
+
+-------------------------------------------------------------------------------------
+
+use sqldb;
+
+select * from buytbl;
+
+select userID, sum(price*amount) from buytbl group by userID;
+
+select userID as 사용자, sum(price*amount) as 총구매액 from buytbl group by userID;
+
+select userID as 사용자, sum(price*amount) as 총구매액 from buytbl group by userID order by 총구매액 desc;
+
+// with 구문 사용
+with abc(userID, total)
+as
+(select userID, sum(price*amount) from buytbl group by userID)
+select * from abc order by total desc;
+
+P243 step1
+
+set @myvar1 = 5;
+set @myvar2 = 3;
+set @myvar3 = 4.25;
+set @myvar4 = '가수이름 : ';
+
+select @myvar1;
+select @myvar1 + @myvar2;
+select @myvar2 + @myvar3;
+
+select @myvar4, name from usertbl where height > 180;
+select @myvar4 as ' ', name from usertbl where height > 180;
+
+# python int(), float(), str() : 타입(형) 변환
+
+-- sql cast(), convert()
+cast(() as signed integer)
+convert((), signed integer)
+
+select 
+avg(amount) 
+as '평균 구매 개수' from buytbl;
+
+select 
+cast(avg(amount) as signed integer) 
+as '평균 구매 개수' from buytbl;
+
+select 
+convert(avg(amount), signed integer) 
+as '평균 구매 개수' from buytbl;
+
+select num, concat('a', 'b', 'c') as '동적 문자열', price*amount as '구매액' from buytbl;
+
+select num, concat('30', '*', 'amount') as '동적 문자열', price*amount as '구매액' from buytbl;
+
+select num, concat(price, '*', 'amount') as '동적 문자열', price*amount as '구매액' from buytbl;
+
+select num, concat(price, '*', amount, '=') as '동적 문자열', price*amount as '구매액' from buytbl;
+
+select num, concat(cast(price as char(10)), '*', cast(amount as char(10)), '=') as '동적 문자열', price*amount as '구매액' from buytbl;
+
+select num, concat(cast(price as char(10)), '*', cast(amount as char(10)), '=') as '산출식', price*amount as '구매액' from buytbl;
+
+-------------------------------------------------------------------------------------
+
+select 0 = '2mega';  # false = 0
+select 0 = 'mega2';  # true = 1
+
+select if(100 > 200, '참', '거짓') as '100 > 200';
+
+select ifnull(null, '널');
+select ifnull(100, '널');
+
+select nullif(100, 100); -- 같은 경우 null
+select nullif(200, 100); -- 다르면 앞 출력
+
+-------------------------------------------------------------------------------------
+
+select
+case 10  -- switch case
+    when 1 then '1 이네요'
+    when 5 then '5 이네요'
+    when 10 then '10 이네요'
+    else '그 밖의 숫자 default'
+    end
+as 'case 문 연습';
+
+select
+case 1  -- switch case
+    when 1 then '1 이네요'
+    when 5 then '5 이네요'
+    when 10 then '10 이네요'
+    else '그 밖의 숫자 default'
+    end
+as 'case 문 연습';
+
+-------------------------------------------------------------------------------------
+8.0부터는 char() 방식이 헥사값으로 뜨는데 변경방법은
+mysql 로그인시 --binary-as-hex=0  이라는 명령어를 붙여서 로그인 하시면 헥사값으로 안나오게됩니다.
+
+방법 : mysql 파일위치에서 mysql의 우클릭 - 속성 - 대상의 뒷부분에 한칸 띄고 "--binary-as-hex=0" 추가
+대상 : "파일주소\my.ini" "-uroot" "-p" "--binary-as-hex=0"
+
+select ascii('A');
+select char(65);
+
+select bit_length('abc');
+select bit_length('가나다');
+
+select char_length('abc');
+select char_length('가나다');
+
+select length('abc');
+select length('가나다');
+
+select concat('010', '1234', '5678');
+select concat_ws('-', '010', '1234', '5678');
+
+elt() : 입력한 숫자 번째의 값 출력 / field() : 입력한 값이 몇 번째에 있는지 출력
+select elt(2, '일', '이', '삼', '사'); -- '이'
+select field('이', '일', '이', '삼', '사'); -- 2
+select field('십', '일', '이', '삼', '사'); -- 0 없다
+
+find_in_set / instr / locate : 입력한 값이 몇 번째 있는지 출력 [' ' 속에 띄어쓰기 금지]
+select find_in_set('이', '일,이,삼,사'); -- 2
+select instr('일이삼사', '이'); -- 2
+select locate('이', '일이삼사'); -- 2
+
+소수점 아래 표시 / 정렬
+format : 왼쪽 정렬 [1,000 단위 쉼표] / round : 오른쪽 정렬 [단위 쉼표 없음]
+select format(123456.123456, 4);
+select format(123456.123456, 2);
+select round(123456.123456, 2);
+
+select insert('abcdefghi', 3, 4, '????'); -- 3번째 값부터 4개의 값을 ?로 변경 [ab????ghi]
+select insert('abcdefghi', 3, 2, '????'); -- 3번째 값부터 2개의 값을 ?로 변경 이후 ?? 추가 [ab????efghi]
+
+select left('010-1234-5678', 3); -- [010]
+select right('010-1234-5678', 4); -- [5678]
+select mid('010-1234-5678', 5, 4); -- [1234]
+
+select substring_index('cafe.naver.com', '.', 2);
+select substring_index('cafe.naver.com', '.', -2);
