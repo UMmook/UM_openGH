@@ -15,3 +15,5 @@ bookstore
 sqldb
  - usertbl
  - buytbl
+ - itemlist
+ - pivotTest

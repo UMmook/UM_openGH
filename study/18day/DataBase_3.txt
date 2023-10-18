@@ -1,0 +1,436 @@
+231018 - DB
+
+select ceiling(4.7); -- 올림
+select floor(4.7); -- 버림
+select round(4.7); -- 반올림
+select round(123456.123456, 2);
+
+select degrees( PI() );
+select degrees( 2*PI() );
+select radians(360);
+select pi();
+
+select adddate('2023-10-18', interval 15 day); -- 2023.10.18 부터 15일 후
+select subdate('2023-10-18', interval 15 day); -- 2023.10.18 부터 15일 전
+select curtime(); -- 현재 시간
+select addtime('2023-10-18 09:23:04', '1:1:1'); -- 시간 더하기
+select subtime('2023-10-18 09:23:04', '24:0:0'); -- 시간 빼기
+select curtime() as 현재시간, addtime(curtime(), '1:0:0') as '1시간 후'; -- 현재시간과 1시간 후
+
+select curdate(), year( curdate() ); -- 오늘 날짜와 연도를 출력
+
+select datediff( '2023-08-16', now() ); -- 8/16 이후 오늘까지 일수 [수강기간]
+select datediff( '2023-12-21', now() ); -- 오늘부터 12/21까지 일수 [남은 수강기간]
+
+select curdate(), dayofweek( curdate() ); -- 4(수)
+select curdate(), monthname( curdate() ); -- October
+select curdate(), dayofyear( curdate() ); -- 291
+
+select current_user();
+select database();
+
+-------------------------------------------------------------------------------------
+
+P269
+create table pivotTest(
+    uname char(3),
+    season char(2),
+    amount int
+);
+
+insert into pivotTest values('김범수', '여름', 10), ('윤종신', '여름', 15), ('김범수', '가을', 25), ('김범수', '봄', 3), ('김범수', '봄', 37), ('윤종신', '겨울', 40), ('김범수', '여름', 14), ('김범수', '겨울', 22), ('윤종신', '여름', 64);
+
+select * from pivotTest;
+
+[예시]
+select uname, 
+    sum() as 봄, 
+    sum() as 여름, 
+    sum() as 가을, 
+    sum() as 겨울, 
+    sum() as 합계 
+from pivotTest group by uname;
+
+select uname,
+    sum(if(season='봄', amount, 0)) as 봄,
+    sum(if(season='여름', amount, 0)) as 여름,
+    sum(if(season='가을', amount, 0)) as 가을,
+    sum(if(season='겨울', amount, 0)) as 겨울,
+    sum(amount) as 합계
+from pivotTest group by uname;
+
+select json_object('name_key', name, 'height_key', height) as 'JSON 값'
+from usertbl where height >= 180;
+
+set @myjson = '{
+"usertbl" : [
+ {"name_key": "임재범", "height_key": 182},
+ {"name_key": "이승기", "height_key": 182},
+ {"name_key": "성시경", "height_key": 186}
+]
+}';
+
+select json_valid(@myjson) as json_valid; -- 1
+
+set @myjson = '{
+"usertbl" : 
+ {"name_key": "임재범", "height_key": 182},
+ {"name_key": "이승기", "height_key": 182},
+ {"name_key": "성시경", "height_key": 186}
+
+}';
+
+select json_valid(@myjson) as json_valid; -- 0 [ ] 대괄호가 없어지면 데이터가 깨짐으로 없는 것으로 판단
+
+select json_search(@myjson, 'one', '성시경');
+
+set @myjson = '{
+"usertbl" : [
+ {"name_key": "임재범", "height_key": 182},
+ {"name_key": "이승기", "height_key": 182},
+ {"name_key": "성시경", "height_key": 186},
+ {"name_key": "이승기", "height_key": 182},
+ {"name_key": "성시경", "height_key": 186}
+]
+}';
+
+select json_search(@myjson, 'one', '성시경');
+select json_search(@myjson, 'all', '성시경');
+
+select json_extract(@myjson, '$.usertbl[2].name_key');
+
+select json_insert(@myjson, '$.usertbl[2].date_key', '2023-10-18');
+
+{"usertbl" : 
+[
+ {"name_key": "임재범", "height_key": 182},
+ {"name_key": "이승기", "height_key": 182},
+ {"date_key": "2023-10-18", "name_key": "성시경", "height_key": 186},
+ {"name_key": "이승기", "height_key": 182},
+ {"name_key": "성시경", "height_key": 186}
+]}
+
+select json_replace(@myjson, '$.usertbl[2].name_key', '성식이형');
+
+select json_remove(@myjson, '$.usertbl[2]');
+
+-------------------------------------------------------------------------------------
+
+P274 inner join (내부 조인) - 대표 조인
+P284 outer join (외부 조인) - P286 left outer join, right outer join, full outer join
+P288 cross join (상호 조인)
+P290 self join (자체 조인)
+
+select userID from buytbl where num = 1;
+
+select addr from usertbl where userID = (select userID from buytbl where num = 1);
+
+select userID, name, addr, mobile1, mobile2 from usertbl where userID = (select userID from buytbl where num = 1);
+
+select *
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID;
+
+select *
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID
+  where usertbl.userID = 'JYP';
+
+select *
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID
+  where buytbl.userID = 'JYP';
+
+select userID, name, addr, mobile1, mobile2
+  from usertbl
+    where userID = (select userID from buytbl where num = 1);
+
+select buytbl.userID, name, addr, concat(mobile1, mobile2) as phonenum, prodName, price, amount 
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID
+  where num = 1;
+
+select name, addr, concat(mobile1, mobile2) as phonenum, prodName, amount 
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID
+  where num = 1;
+
+select name, addr, concat(mobile1, mobile2) as phonenum, prodName, amount 
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID
+  where num = 2;
+
+select name, addr, concat(mobile1, mobile2) as phonenum, prodName, amount 
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID
+  where num = 3;
+
+select *
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID
+  order by buytbl.userID;
+
+select *
+  from buytbl, usertbl
+    where buytbl.userID = usertbl.userID;
+
+ -- 중복만 테이블 입력
+select buytbl.userID, name, addr, prodName
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID;
+
+ -- 모든 테이블 입력
+select buytbl.userID, usertbl.name, usertbl.addr, buytbl.prodName
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID;
+
+ -- 테이블 별칭 적용 후 테이블 입력
+select B.userID, U.name, U.addr, B.prodName
+  from buytbl B inner join usertbl U
+    on B.userID = U.userID;
+
+select distinct B.userID, U.name, U.addr
+  from buytbl B inner join usertbl U
+    on B.userID = U.userID;
+
+select U.userID, U.name, U.addr
+  from usertbl U
+  where exists(select * from buytbl B where B.userID = U.userID);
+
+
+
+create table stdtbl(
+    stdname varchar(10) NOT NULL PRIMARY KEY,
+    addr char(4) NOT NULL
+);
+
+create table clubtbl(
+    clubname varchar(10) NOT NULL PRIMARY KEY,
+    rommno char(4) NOT NULL
+);
+
+create table stdclubtbl(
+    num int auto_increment NOT NULL PRIMARY KEY,
+    stdname varchar(10) NOT NULL,
+    clubname varchar(10) NOT NULL,
+    foreign key(stdname) references stdtbl(stdname),
+    foreign key(clubname) references clubtbl(clubname)
+);
+
+insert into stdtbl values('김범수', '경남'), ('성시경', '서울'), ('조용필', '경기'), ('은지원', '경북'), ('바비킴', '서울');
+insert into clubtbl values('수영', '101호'), ('바둑', '102호'), ('축구', '103호'), ('봉사', '104호');
+insert into stdclubtbl values(NULL, '김범수', '바둑'), (NULL, '김범수', '축구'), (NULL, '조용필', '축구'), (NULL, '은지원', '축구'), (NULL, '은지원', '봉사'), (NULL, '바비킴', '봉사');
+
+select *
+  from stdtbl 
+  inner join stdclubtbl
+    on stdtbl.stdname = stdclubtbl.stdname -- 외래키 : stdname
+  inner join clubtbl
+    on stdclubtbl.clubname = clubtbl.clubname; -- 외래키 : clubname
+
+select *
+  from stdtbl S
+  inner join stdclubtbl SC
+    on S.stdname = SC.stdname -- 외래키 : stdname
+  inner join clubtbl C
+    on SC.clubname = C.clubname; -- 외래키 : clubname
+
+select *
+  from usertbl U left outer join buytbl B
+    on U.userID = B.userID
+  order by B.num;
+
+select *
+  from buytbl inner join usertbl
+    on buytbl.userID = usertbl.userID;
+
+select *
+  from buytbl B right outer join usertbl U
+    on U.userID = B.userID
+  order by B.num;
+
+select *
+  from buytbl B right outer join usertbl U
+    on U.userID = B.userID
+  where B.prodName is NULL;
+
+select U.name as '비 구매자'
+  from buytbl B right outer join usertbl U
+    on U.userID = B.userID
+  where B.prodName is NULL;
+
+-------------------------------------------------------------------------------------
+
+use bookstore
+
+Q. 김연아가 주문한 책의 saleprice를 조회해보자 (join 이용)
+
++-----------+
+| saleprice |
++-----------+
+|      8000 |
+|      7000 |
++-----------+
+
+select saleprice
+  from customer C inner join orders O
+    on C.custid = O.custid
+  where name = '김연아';
+
+Q. 김연아가 주문한 책의 bookname을 조회해보자 (join 이용)
+
++-------------------+
+| bookname          |
++-------------------+
+| 피겨 교본         |
+| Olympic Champions |
++-------------------+
+
+select bookname
+  from customer C inner join orders O
+    on C.custid = O.custid
+  inner join book B
+    on O.bookid = B.bookid
+  where name = '김연아';
+
+Q. 정가(price)가 20000원인 도서를 주문한 고객의 이름과 도서 이름을 조회해보자
+
++--------+-------------+
+| name   | bookname    |
++--------+-------------+
+| 추신수 | 야구의 추억 |
++--------+-------------+
+
+select name, bookname
+  from customer C inner join orders O
+    on C.custid = O.custid
+  inner join book B
+    on O.bookid = B.bookid
+  where price = 20000;
+
+Q. 도서 구매 여부와 무관하게, 가입 고격별 총 구매액을 조회하자.
+
++--------+-----------+
+| 이름   | 총 구매액 |
++--------+-----------+
+| 박지성 |     39000 |
+| 김연아 |     15000 |
+| 정미란 |     31000 |
+| 추신수 |     33000 |
+| 박세리 |      NULL |
++--------+-----------+
+
+select C.name as 이름, sum(saleprice) as '총 구매액'
+  from customer C left outer join orders O
+    on C.custid = O.custid
+  group by C.name;
+
+Q. 가장 비싸게 팔린 (saleprice) 책의 이름을 조회해 보자
+
++-------------+-----------+
+| bookname    | saleprice |
++-------------+-----------+
+| 축구의 이해 |     21000 |
++-------------+-----------+
+
+select B.bookname, O.saleprice
+  from book B inner join orders O
+    on B.bookid = O.bookid
+  where saleprice = (select max(saleprice) from orders);
+
+Q. 박지성이 구매한 도서의 출판사 수
+
++--------------+
+| 총 출판사 수 |
++--------------+
+|            3 |
++--------------+
+
+ -- join 사용 x --
+select count(publisher) as '총 출판사 수'
+  from book
+  where bookid in(
+select bookid 
+  from orders
+  where custid = (
+select custid 
+  from customer 
+  where name = '박지성'));
+
+ -- join 사용 o --
+select count(distinct publisher) as '총 출판사 수'
+  from book B inner join orders O
+    on B.bookid = O.bookid
+  inner join customer C
+    on C.custid = O.custid
+  where name = '박지성';
+
+Q. 박지성이 구매한 도서의 이름, 정가(price), 정가와 판매가의 차이
+
++----------------+-------+------+
+| bookname       | price | 차이 |
++----------------+-------+------+
+| 축구의 역사    |  7000 | 1000 |
+| 축구의 이해    | 22000 | 1000 |
+| 축구 아는 여자 | 13000 | 1000 |
++----------------+-------+------+
+
+select B.bookname, B.price, (B.price - O.saleprice) as 차이
+  from book B inner join orders O
+    on B.bookid = O.bookid
+  inner join customer C
+    on C.custid = O.custid
+  where name = '박지성';
+
+Q. 도서의 정가(price)와 판매가(saleprice)의 차이가 가장 큰 주문의 정보를(*) 조회
+
++--------+-------------------+-----------+-------+---------+--------+--------+-----------+------------+
+| bookid | bookname          | publisher | price | orderid | custid | bookid | saleprice | orderdate  |
++--------+-------------------+-----------+-------+---------+--------+--------+-----------+------------+
+|     10 | Olympic Champions | Pearson   | 13000 |       9 |      2 |     10 |      7000 | 2014-07-09 |
++--------+-------------------+-----------+-------+---------+--------+--------+-----------+------------+
+
+select *
+  from book B inner join orders O
+    on B.bookid = O.bookid
+  where B.price-O.saleprice = (
+select max(B.price-O.saleprice) 
+  from book B inner join orders O 
+    on B.bookid = O.bookid);
+
+-------------------------------------------------------------------------------------
+
+use sqldb;
+
+select * from buytbl cross join usertbl; -- buytbl : 12 / usertbl : 10 / 12 * 10 = 120개
+
+use bookstore;
+
+select * from book cross join customer; -- book : 10 / customer : 5 / 10 * 5 = 50개
+
+use sqldb;
+
+select * 
+  from buytbl cross join usertbl;
+
+select * 
+  from buytbl B inner join usertbl U
+    on B.userID = U.userID;
+
+-------------------------------------------------------------------------------------
+
+P291
+
+select ~~
+  from emptbl A inner join emptbl B
+    on A.manager = B.emp
+
+create table empTbl(
+    emp char(3),
+    manager char(3),
+    empTel varchar(8)
+);
+
+insert into empTbl values('나사장', NULL, '0000'), ('김재무', '나사장', '2222'), ('김부장', '김재무', '2222-1'), ('이부장', '김재무', '2222-2'), ('우대리', '이부장', '2222-2-1'), ('지사원', '이부장', '2222-2-2'), ('이영업', '나사장', '1111'), ('한과장', '이영업', '1111-1'), ('최정보', '나사장', '3333'), ('윤차장', '최정보', '3333-1'), ('이주임', '윤차장', '3333-1-1');
+
+select * from empTbl;
