@@ -416,21 +416,3 @@ select *
 select * 
   from buytbl B inner join usertbl U
     on B.userID = U.userID;
-
--------------------------------------------------------------------------------------
-
-P291
-
-select ~~
-  from emptbl A inner join emptbl B
-    on A.manager = B.emp
-
-create table empTbl(
-    emp char(3),
-    manager char(3),
-    empTel varchar(8)
-);
-
-insert into empTbl values('나사장', NULL, '0000'), ('김재무', '나사장', '2222'), ('김부장', '김재무', '2222-1'), ('이부장', '김재무', '2222-2'), ('우대리', '이부장', '2222-2-1'), ('지사원', '이부장', '2222-2-2'), ('이영업', '나사장', '1111'), ('한과장', '이영업', '1111-1'), ('최정보', '나사장', '3333'), ('윤차장', '최정보', '3333-1'), ('이주임', '윤차장', '3333-1-1');
-
-select * from empTbl;

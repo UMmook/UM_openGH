@@ -1,0 +1,431 @@
+231019 - DB
+
+P291
+
+use sqldb;
+
+select ~~
+  from emptbl A inner join emptbl B
+    on A.manager = B.emp
+
+create table empTbl(
+    emp char(3),
+    manager char(3),
+    empTel varchar(8)
+);
+
+insert into empTbl values('나사장', NULL, '0000'), ('김재무', '나사장', '2222'), ('김부장', '김재무', '2222-1'), ('이부장', '김재무', '2222-2'), ('우대리', '이부장', '2222-2-1'), ('지사원', '이부장', '2222-2-2'), ('이영업', '나사장', '1111'), ('한과장', '이영업', '1111-1'), ('최정보', '나사장', '3333'), ('윤차장', '최정보', '3333-1'), ('이주임', '윤차장', '3333-1-1');
+
+select * from empTbl;
+
+select * 
+  from empTbl A inner join empTbl B
+    on A.manager = B.emp;
+
+select A.emp, A.empTel, B.emp, B.empTel
+  from empTbl A inner join empTbl B
+    on A.manager = B.emp
+  where A.emp = '우대리';
+
+select A.emp as 직원명, B.emp as 상관명, B.empTel as 상관전화번호
+  from empTbl A inner join empTbl B
+    on A.manager = B.emp
+  where A.emp = '우대리';
+
+-------------------------------------------------------------------------------------
+
+select * from buytbl where prodName in('노트북', '모니터');
+
+select * from buytbl where prodName = '노트북'
+union
+select * from buytbl where prodName = '모니터';
+
+select * from buytbl where prodName not in('노트북', '모니터');
+
+-------------------------------------------------------------------------------------
+
+function, subroutine, method, procedure
+
+-------------------------------------------------------------------------------------
+
+
++--------------------------------+
+| 출력결과                       |
++--------------------------------+
+| 변수 값이 100, 200 이 아니네요 |
++--------------------------------+
+
+DROP PROCEDURE IF EXISTS ifProc;
+DELIMITER $$
+CREATE PROCEDURE ifProc()
+BEGIN
+  DECLARE var1 INT;
+  SET var1 = 300;
+  IF var1 = 100 THEN
+    SELECT '변수 값이 100 이네요' as 출력결과;
+  ELSEIF var1 = 200 THEN
+    SELECT '변수 값이 200 이네요' as 출력결과;
+  ELSE
+    SELECT '변수 값이 100, 200 이 아니네요' as 출력결과;
+  END IF;
+END $$
+DELIMITER ;
+CALL ifProc();
+
+-------------------------------------------------------------------------------------
+
+
++-----------------------------------------------+
+| CONCAT('취득점수:', point, ', 학점:', credit) |
++-----------------------------------------------+
+| 취득점수:77, 학점:C                           |
++-----------------------------------------------+
+
+DROP PROCEDURE IF EXISTS ifProc3;
+DELIMITER $$
+CREATE PROCEDURE ifProc3()
+BEGIN
+  DECLARE point INT;
+  DECLARE credit CHAR(1);
+  SET point = 77;
+  IF point >= 90 THEN
+    SET credit = 'A';
+  ELSEIF point >= 80 THEN
+    SET credit = 'B';
+  ELSEIF point >= 70 THEN
+    SET credit = 'C';
+  ELSEIF point >= 60 THEN
+    SET credit = 'D';
+  ELSE
+    SET credit = 'F';
+  END IF;
+  SELECT CONCAT('취득점수:', point, ', 학점:', credit);
+END $$
+DELIMITER ;
+CALL ifProc3();
+
+-------------------------------------------------------------------------------------
+
+
++-----------------------------------------------+
+| CONCAT('취득점수:', point, ', 학점:', credit) |
++-----------------------------------------------+
+| 취득점수:77, 학점:C                           |
++-----------------------------------------------+
+
+DROP PROCEDURE IF EXISTS caseProc;
+DELIMITER $$
+CREATE PROCEDURE caseProc()
+BEGIN
+  DECLARE point INT;
+  DECLARE credit CHAR(1);
+  SET point = 77;
+
+  CASE
+    WHEN point >= 90 THEN
+      SET credit = 'A';
+    WHEN point >= 80 THEN
+      SET credit = 'B';
+    WHEN point >= 70 THEN
+      SET credit = 'C';
+    WHEN point >= 60 THEN
+      SET credit = 'D';
+    ELSE
+      SET credit = 'F';
+  END CASE;
+
+  SELECT CONCAT('취득점수:', point, ', 학점:', credit);
+END $$
+DELIMITER ;
+CALL caseProc();
+
+-------------------------------------------------------------------------------------
+
+
+select name, birthYear, 
+CASE
+  WHEN birthYear >= 1970 AND birthYear < 1980 THEN '70년대생'
+  WHEN birthYear >= 1980 AND birthYear < 1990 THEN '80년대생'
+  ELSE '그 외 세대'
+END
+as 년대생 from userTbl;
+
+-------------------------------------------------------------------------------------
+
+
++--------------------+
+| 1~100              |
++--------------------+
+| 누적합:5050, i:101 |
++--------------------+
+
+DROP PROCEDURE IF EXISTS whileProc;
+DELIMITER $$
+CREATE PROCEDURE whileProc()
+BEGIN
+  DECLARE i INT;
+  DECLARE hap INT;
+  SET i = 1;
+  SET hap = 0;
+
+  WHILE (i <= 100) DO
+    SET hap = hap + i;
+    SET i = i + 1;
+  END WHILE;
+
+  SELECT CONCAT('누적합:', hap, ', i:', i) as '1~100';
+END $$
+DELIMITER ;
+CALL whileProc();
+
+-------------------------------------------------------------------------------------
+
+
++-------------------+
+| 1~100             |
++-------------------+
+| 누적합:1029, i:48 |
++-------------------+
+
+DROP PROCEDURE IF EXISTS whileProc2;
+DELIMITER $$
+CREATE PROCEDURE whileProc2()
+BEGIN
+  DECLARE i INT;
+  DECLARE hap INT;
+  SET i = 1;
+  SET hap = 0;
+
+  mylabel: WHILE (i <= 100) DO
+    IF (i % 7 = 0) THEN
+      SET i = i + 1;
+      ITERATE mylabel;
+    END IF;
+
+    SET hap = hap + i;
+    IF (hap > 1000) THEN
+      LEAVE mylabel;
+    END IF;
+    SET i = i + 1;
+  END WHILE;
+
+  SELECT CONCAT('누적합:', hap, ', i:', i) as '1~100';
+END $$
+DELIMITER ;
+CALL whileProc2();
+
+-------------------------------------------------------------------------------------
+
+
+// 없는 테이블인 noTable을 불러오게 되면 1146 에러코드가 발생하지만
+// 에러코드 대신 '표 없네'를 출력하도록 설정
++---------+
+| 표 없네 |
++---------+
+| 표 없네 |
++---------+
+
+DROP PROCEDURE IF EXISTS errorProc;
+DELIMITER $$
+CREATE PROCEDURE errorProc()
+BEGIN
+  DECLARE CONTINUE HANDLER FOR 1146 SELECT '표 없네';
+  select * from noTable; -- buytbl;
+END $$
+DELIMITER ;
+CALL errorProc();
+
+-------------------------------------------------------------------------------------
+
+desc usertbl;
+
+ -- 맨 뒤에 추가
+alter table usertbl
+  add homepage varchar(30) default 'https://www.naver.com';
+
+desc usertbl;
+
+select * from usertbl;
+
+ -- 삭제
+alter table usertbl
+  drop column homepage;
+
+ -- 맨 앞에 추가
+alter table usertbl
+  add homepage varchar(30) first;
+
+ -- 삭제
+alter table usertbl
+  drop column homepage;
+
+ -- addr 뒤에 추가
+alter table usertbl
+  add homepage varchar(30) after addr;
+
+ -- homepage를 website로 varchar(20) 변경하고 default 추가 
+ -- [NULL값이 있는 사람들은 default로 변경 안됨]
+alter table usertbl
+  change column homepage website varchar(20) default 'www.naver.com';
+
+ -- 값 하나를 추가하면 website가 default 값으로 추가됨
+insert into usertbl(name, userID, birthYear, addr) values('김진수', 'KJS', 1997, '안산');
+
+alter table buytbl drop foreign key buytbl_ibfk_1;
+
+desc buytbl;
+
+alter table usertbl drop primary key;
+
+select userID, name, addr from usertbl;
+
+ -- DB 정보를 view화 하여 보안
+create view v_usertble as select userID, name, addr from usertbl;
+
+ -- view화한 DB정보
+select * from v_usertble;
+
+
+ -- DB 정보를 view화 하여 보안
+create view v_usertbl_x0s as
+select name, birthYear, 
+CASE
+  WHEN birthYear >= 1970 AND birthYear < 1980 THEN '70년대생'
+  WHEN birthYear >= 1980 AND birthYear < 1990 THEN '80년대생'
+  ELSE '그 외 세대'
+END
+as 년대생 from userTbl;
+
+ -- view화한 DB정보
+select * from v_usertbl_x0s;
+
+-------------------------------------------------------------------------------------
+
+P388
+
+create database testdb;
+
+create table clustertbl(
+  userID char(8),
+  name varchar(10)
+);
+
+insert into clustertbl values('LSG', '이승기'), ('KBS', '김범수'), ('KKH', '김경호'), ('JYP', '조용필'), ('SSK', '성시경'), ('LJB', '임재범'), ('YJS', '윤종신'), ('EJW', '은지원'), ('JKW', '조관우'), ('BBK', '바비킴');
+
+select * from clustertbl;
+
+alter table clustertbl
+  add constraint pk_clustertbl_userID primary key(userID);
+
+select * from clustertbl;
+
+create table secondarytbl(
+  userID char(8),
+  name varchar(10)
+);
+
+insert into secondarytbl values('LSG', '이승기'), ('KBS', '김범수'), ('KKH', '김경호'), ('JYP', '조용필'), ('SSK', '성시경'), ('LJB', '임재범'), ('YJS', '윤종신'), ('EJW', '은지원'), ('JKW', '조관우'), ('BBK', '바비킴');
+
+alter table secondarytbl
+  add constraint uk_secondarytbl_userID unique(userID);
+
+select * from secondarytbl;
+
+-------------------------------------------------------------------------------------
+
+P397
+
+create table mixedtbl(
+  userID char(8) NOT NULL,
+  name varchar(10) NOT NULL,
+  addr char(2)
+);
+
+insert into mixedtbl values('LSG', '이승기', '서울'), ('KBS', '김범수', '경남'), ('KKH', '김경호', '전남'), ('JYP', '조용필', '경기'), ('SSK', '성시경', '서울'), ('LJB', '임재범', '서울'), ('YJS', '윤종신', '경남'), ('EJW', '은지원', '경북'), ('JKW', '조관우', '경기'), ('BBK', '바비킴', '서울');
+
+select * from mixedtbl;
+
+alter table mixedtbl
+  add constraint pk_mixedtbl_userID primary key(userID);
+
+alter table mixedtbl
+  add constraint uk_mixedtbl_name unique(name);
+
+-------------------------------------------------------------------------------------
+
+use sqldb;
+
+alter table usertbl
+  change column userID userID varchar(8) primary key;
+
+show index from usertbl;
+
+create index idx_usertbl_addr
+  on usertbl (addr);
+
+analyze table usertbl;
+
+show table status like 'usertbl';
+
+ -- 문법이 틀린게 없지만 에러가 뜰 것
+create unique index idx_usertbl_birthYear
+  on usertbl (birthYear);
+
+delete from usertbl where name = '김진수';
+
+create unique index idx_usertbl_name 
+  on usertbl (name);
+
+show index from usertbl;
+
+desc usertbl;
+
+drop index idx_usertbl_name
+  on usertbl;
+
+show index from usertbl;
+
+create index idx_usertbl_name_birthYear
+  on usertbl (name, birthYear);
+
+show index from usertbl;
+
+-------------------------------------------------------------------------------------
+
+create database pythondb;
+use pythondb;
+
+create table test1(
+  col1 int,
+  col2 varchar(10)
+);
+
+[python 값 insert 후 con.commit]
+
+select * from test1;
++------+------+
+| col1 | col2 |
++------+------+
+|    1 | 값1  |
+|    1 | 값1  |
+|    1 | 값1  |
+|    1 | 값1  |
+|    1 | 값1  |
++------+------+
+
+delete from test1;
+
+[python 값 for문으로 insert con.commit]
+
+select * from test1;
+
+create table hollys(
+  local varchar(40),
+  storename varchar(40),
+  address varchar(100),
+  phone varchar(20)
+);
+
+[python hollys 값 입력]
+
+select * from hollys;
