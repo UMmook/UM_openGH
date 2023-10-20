@@ -1,0 +1,382 @@
+P28
+
+function first(){
+  second();
+  console.log( '나는 함수 first()' );
+}
+
+function second(){
+  third();
+  console.log( '나는 함수 second()' );
+}
+
+function third(){
+  console.log( '나는 함수 third()' );
+}
+
+first();
+
+------------------------------------------------------------------
+
+function run(){
+  console.log('나는 run이다');
+}
+
+console.log('시작');
+run();
+console.log('끝');
+
+console.log('시작');
+setTimeout(run, 3000);
+console.log('끝');
+
+------------------------------------------------------------------
+
+function run(){
+  console.log('나는 run이다');
+}
+function run2(){
+  console.log('나는 run2이다');
+}
+
+console.log('시작');
+setTimeout(run2, 5000);
+setTimeout(run, 3000);
+console.log('끝');
+
+------------------------------------------------------------------
+
+[ ES5 ]
+var num1 = 1;
+var num2 = 2;
+var result = num1 + num2;
+var string1 = num1 + '+' + num2 + '=' + result;
+console.log(string1);
+
+[ ES6 ]
+const num3 = 1;
+const num4 = 2;
+let num5 = num3 + num4
+const string2 = `${num3} + ${num4} = ${num5}`;
+console.log(string2);
+
+------------------------------------------------------------------
+
+var sayNode = function(){
+  console.log('Node');
+};
+var es = 'ES';
+var oldObject = {
+  sayJS: function(){ console.log('JS');},
+  sayNode: sayNode
+};
+oldObject
+
+
+const newObject = {
+  sayJS(){ console.log('JS');},
+  sayNode,
+  [es+6]: 'Good'
+};
+newObject.sayNode();
+newObject.ES6
+
+------------------------------------------------------------------
+
+// ES5
+var name = '김진수';
+var age = 25;
+var ssam = {name:name, age:age};
+ssam.name
+
+// ES6
+ssam2 = {name, age};
+ssam2.name
+
+------------------------------------------------------------------
+
+// ES5
+function add1(x, y){ return x + y; }
+
+// ES6
+const add2 = (x, y)=>{ return x + y; }
+const add3 = (x, y)=>x + y;
+
+------------------------------------------------------------------
+
+const color = ['red', 'green', 'blue'];
+let r = color[0];
+let g = color[1];
+let b = color[2];
+
+let user = {
+  id: 'mulcam',
+  pw: '1234',
+  name: '김멀캠',
+  age: 30
+};
+
+let id2 = user.id;
+let pw2 = user.pw;
+let name2 = user.name;
+let age2 = user.age;'
+
+[ 배열 구조 분해 ]
+let [r2, g2, b2] = color;
+
+const [lang1, lang2] = ["python", "JavaScript"];
+const [lang1, lang2, lang3 = "Java"] = ["python", "JavaScript"];
+const [lang1, lang2, lang3] = ["python", "JavaScript", "Java", "C#"];
+const [lang1, lang2, ...lang_rest] = ["python", "JavaScript", "Java", "C#", "Go"];
+
+const arr1 = ["C#", "JavaScript"];
+const arr2 = ["Python", "Java"];
+const arr3 = [arr1, arr2];
+const arr4 = [...arr1, ...arr2];
+
+[ 객체 구조 분해 ]
+let user = {
+  id: 'mulcam',
+  pw: '1234',
+  name: '김멀캠',
+  age: 30
+};
+let {id, pw, name, age} = user;
+
+------------------------------------------------------------------
+
+var candyMachine = {
+  status:{
+  name:'node',
+  count:5
+  },
+  getCandy: function(){
+  this.status.count--;
+  return this.status.count;
+  }
+};
+var getCandy = candyMachine.getCandy;
+var count = candyMachine.status.count;
+
+count
+getCandy()
+count
+candyMachine.getCandy()
+
+------------------------------------------------------------------
+
+var candyMachine = {
+  status:{
+  name:'node',
+  count:5
+  },
+  getCandy: function(){
+  this.status.count--;
+  return this.status.count;
+  }
+};
+const {getCandy, status:{count}} = candyMachine;
+
+------------------------------------------------------------------
+
+let user2 = {
+  name: '김멀캠',
+  age: 30
+};
+let {id, pw, name, age} = user2;
+let {id='guest', pw='0000', name, age} = user2;
+let user = {
+  id: 'mulcam',
+  pw: '1234',
+  name: '김멀캠',
+  age: 30
+};
+let {id, ...rest} = user;
+
+------------------------------------------------------------------
+
+function first(callback){
+  setTimeout(function(){
+    console.log("1st");
+    callback();
+  }
+  , 3000);
+}
+
+function second(){
+  console.log("2nd");
+}
+
+// callback 활용 blocking
+first(function () { second(); });
+
+function first2(){
+  setTimeout(function(){
+    console.log("1st");
+  }
+  , 3000);
+}
+
+// non-blocking
+first2();
+second();
+
+------------------------------------------------------------------
+
+// 양식 코스
+function havingSoup() {
+  setTimeout(function(){
+  console.log("스프를 먹는다");
+  } , 2000);
+}
+function havingSteak(){
+  setTimeout(function(){
+  console.log("스테이크를 먹는다");
+  } , 1000);
+}
+function havingBread(){
+  setTimeout(function(){
+  console.log("빵을 먹는다");
+  } , 3000);
+}
+function havingDessert(){
+  setTimeout(function(){
+  console.log("케이크를 먹는다");
+  } , 500);
+}
+
+havingSoup()
+havingSteak()
+havingBread()
+havingDessert()
+
+------------------------------------------------------------------
+
+function first(callback){
+  setTimeout(function(){
+    console.log("1st");
+    callback();
+  } , 3000);
+}
+
+function second(){
+  console.log("2nd");
+}
+
+first(function () { second(); });
+
+------------------------------------------------------------------
+
+function havingSoup(callback){
+  setTimeout(function(){
+    console.log("스프를 먹었다.");
+    callback();
+  } , 2000);
+}
+
+function havingSteak(callback){
+  setTimeout(function(){
+    console.log("스테이크를 먹었다.");
+    callback();
+  } , 1000);
+}
+
+function havingBread(callback){
+  setTimeout(function(){
+    console.log("빵을 먹었다");
+    callback();
+  } , 3000);
+}
+
+// 다음 실행문이 없으면 callback 제거해도 됨
+function havingDessert(){
+  setTimeout(function(){
+  console.log("케이크를 먹었다");
+  } , 500);
+}
+
+havingSoup( 
+  function () { havingSteak(
+    function () { havingBread(
+      function () { havingDessert() } 
+    ); }
+  ); } 
+);
+
+------------------------------------------------------------------
+
+setTimeout(
+  (mes) => {
+    console.log(mes);
+
+    setTimeout(
+      (mes) => {
+        console.log(mes);
+
+        setTimeout(
+          (mes) => {
+            console.log(mes);
+
+            setTimeout(
+              (mes) => {
+                console.log(mes);
+              }, 500, "케이크를 먹었다."
+            );
+
+          }, 3000, "빵을 먹었다."
+        );
+
+      } , 1000, "스테이크를 먹었다."
+    );
+
+  } , 2000, "스프를 먹었다."
+);
+
+------------------------------------------------------------------
+
+P75
+
+const condition = true;
+const promise = new Promise(
+  (resolve, reject) => {
+    if(condition) {
+      resolve('성공');
+    } else {
+      reject('실패');
+    }
+  }
+);
+
+// promise.then().catch().finally();
+promise
+  .then((mes) => { console.log(mes); })
+  .catch((mes) => { console.log(mes); })
+  .finally(() => { console.log('잘 됐든 못 됐든 주말 잘 보내요'); });
+
+
+------------------------------------------------------------------
+
+P77 
+
+//callback 방식
+function findAndSaveUser(Users){
+  Users.findOne( {}, (err, user) => { // 첫 번째 콜백
+    if(err) { return console.log(err); }
+    user.name = 'zero';
+    user.save( (err) => { // 두 번째 콜백
+      if(err) { return console.log(err); }
+      Users.findOne( {gender: 'm'}, (err, user) => { // 세 번째 콜백
+      });
+    });
+  });
+}
+
+// promise 방식
+function findAndSaveUser(Users){
+  Users.findOne( {})
+    .then((user) => { user.name = 'zero'; return user.save(); })
+    .then((user) => { return Users.findOne( {gender: 'm'} ); })
+    .catch(err => { console.log(err); })
+}
+
+------------------------------------------------------------------
