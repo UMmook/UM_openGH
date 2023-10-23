@@ -1,0 +1,170 @@
+P78
+
+// promise.all
+
+const promise1 = Promise.resolve('성공1');
+const promise2 = Promise.resolve('성공2');
+Promise.all( [promise1, promise2] ).then(
+  (res)=>{ console.log(res); }
+)
+
+------------------------------------------------------------------
+
+// resolve = then( )이 사용되며, reject = catch( )가 사용된다.
+// reject 사용 후 catch( )가 없다면 오류가 발생한다.
+
+const promise1 = Promise.resolve('성공1');
+const promise2 = Promise.reject('실패2');
+const promise3 = Promise.resolve('성공3');
+Promise.all( [promise1, promise2, promise3] ).then(
+  (res)=>{ console.log(res); }
+)
+.catch(
+  (res)=>{ console.log(res); }
+);
+
+
+------------------------------------------------------------------
+
+// promise -> async/await 방식
+
+function findAndSaveUser(Users){
+  Users.findOne( {} )
+  .then( (user) => { user.name = 'zero'; return user.save(); } )
+  .then( (user) => { return Users.findOne({ gender: 'm' }); } )
+  .catch( err => { console.log(err); } );
+}
+
+async function findAndSaveUser(Users){
+  let user = await Users.findOne( {} );
+  user.name = 'zero';
+  user = await user.save();                        // .then( (user) => { user.name = 'zero'; return user.save(); } )
+  user = await Users.findOne({gender: 'm'});  // .then( (user) => { return Users.findOne({gender: 'm'}); } )
+  // .catch( err => { console.log(err); } );
+}
+
+const findAndSaveUser = async(Users) => {   // async function findAndSaveUser(Users){
+  try {
+    let user = await Users.findOne( {} );
+    user.name = 'zero';
+    user = await user.save();                        // .then( (user) => { user.name = 'zero'; return user.save(); } )
+    user = await Users.findOne({gender: 'm'});  // .then( (user) => { return Users.findOne({gender: 'm'}); } )
+  } catch(err) { console.log(err); }
+}
+
+------------------------------------------------------------------
+
+const promise1 = Promise.resolve('성공1');
+const promise2 = Promise.resolve('성공2');
+Promise.all( [promise1, promise2] ).then(
+  (res)=>{ console.log(res); }
+)
+->
+const promise1 = Promise.resolve('성공1');
+const promise2 = Promise.resolve('성공2');
+(async () => {
+  for await (p of [promise1, promise2] ){ console.log(p); }
+})();
+
+------------------------------------------------------------------
+
+P84
+
+?? 널 병합 -> || 연산자 대용
+?. 옵셔널 체이닝
+
+const a = 0;
+const b = a || 3;
+console.log(b);     // b = 3
+
+const a = 1;
+const b = a || 3;
+console.log(b);     // b = 1
+
+const c = 0;
+const d = c ?? 3;
+console.log(d);     // d = 0
+
+const c = null;
+const d = c ?? 3;
+console.log(d);     // d = 3
+
+const a = {};
+a.b;
+
+const c = null;
+c.d;
+
+const c = null;
+try{
+ c.d;
+} catch(e) { console.log(e); }
+
+c?.d
+
+------------------------------------------------------------------
+
+P86
+
+ajax 에이잭스 (async 비동기, js and XML)
+
+XML vs json
+
+guests
+ -> firstname: DJ, lastname: oh
+ -> firstname: JS, lastname: shin
+ -> firstname: SY, lastname: lim
+
+<xml>
+<guest>
+  <guest>
+    <firstname>DJ</firstname>
+    <lastname>oh</lastname>
+  </guest>
+  <guest>
+    <firstname>JS</firstname>
+    <lastname>shin</lastname>
+  </guest>
+  <guest>
+    <firstname>SY</firstname>
+    <lastname>lim</lastname>
+  </guest>
+</guest>
+</xml>
+
+JS 객체
+{guest: ~~}
+JSON
+{"guests": [
+  { "guest": {"firstname":"DJ", "lastname":"oh"} },
+  { "guest": {"firstname":"SJ", "lastname":"shin"} },
+  { "guest": {"firstname":"SY", "lastname":"lim"} }
+]}
+
+const testJson = '{"guests": [ { "guest": {"firstname":"DJ", "lastname":"oh"} }, { "guest": {"firstname":"SJ", "lastname":"shin"} }, { "guest": {"firstname":"SY", "lastname":"lim"} } ]}';
+
+const testObj = JSON.parse(testJson);
+
+------------------------------------------------------------------
+
+P89
+
+encodeURIcomponent: 한글 -> %EB~~~~~
+decodeURIcomponent: %EB~~~~~ -> 한글
+
+
+https://www.youtube.com/results?search_query=%EC%95%84 %EC%9D%B4 %EB%8F%8C
+                                 results?search_query=아이돌
+
+https://www.youtube.com/results?search_query=%EC%95%84 %EC%9D%B4 %EB%B8%8C
+                                 results?search_query=아이브
+
+
+
+
+
+
+
+
+
+
