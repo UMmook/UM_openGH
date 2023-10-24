@@ -28,8 +28,6 @@ async function getUser(){
             const remove = document.createElement('button');
             remove.textContent = '삭제';
             remove.addEventListener('click', async() => {
-                const name = prompt('수정할 이름을 선택하세요');
-                if(!name){ return alert('이름 입력 해야지요?'); }
                 try{
                     await axios.delete('/user/' + key); // p195 밑에서 2줄
                     getUser();                          // 수정된 내용으로 다시 그리기
@@ -53,10 +51,12 @@ window.onload = getUser
 
 document.getElementById('form').addEventListener('submit', 
 async (e) => {
+    console.log("이름 폼 버튼 눌렀다");
     e.preventDefault();                    // html tag의 기본 이벤트 막음
     const name = e.target.username.value;
     if(!name){ return alert('이름 입력 해야지요?'); }
     try{
+        console.log("이름 post로 쏘겠다");
         await axios.post('/user', {name}); // p195 10줄
         getUser();                         // list ui control
     } catch(err) {

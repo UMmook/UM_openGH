@@ -1,0 +1,51 @@
+p220
+
+ -- cmd --
+
+// node 확인
+node
+
+// npm 폴더 위치 이동
+d:
+cd D:\malcam3\GitHub\UM_openGH\study\19day\npmProj
+
+// json 생성
+npm init
+[description: my first npm project / author: js kim] 만 입력 하고 나머지는 엔터
+
+ ==> package.json 생성
+
+
+
+// express 설치
+npm install express
+
+ ==> node_modules 폴더와 package-lock.json 파일 생성
+
+
+
+// morgan, cookie-parser, express-session 설치
+npm install morgan cookie-parser express-session
+
+
+
+// 내부용(devDependencies)에 nodemon 설치
+npm install --save-dev nodemon
+
+
+
+// 리눅스, 맥 명령어 사용 전역 설치(global)
+npm install --global rimraf
+
+
+
+// 패키지 세부 사항 확인
+npm info
+
+
+
+// VSC를 통해 연결된 코딩을 시작
+npm start
+
+ ==> 실시간 수정 적용 [오류 많아서 맹신하지말 것]
+
