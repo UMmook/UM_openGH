@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <p>{{title}}를 전달 받았어요</p>
+        <button class="{{title}}">전송</button>
+        <input type="text" placeholder="{{title}}을 받아왔어요"/>
+        {% set A = 'node.js' %}
+        {% set B = 'javascript' %}
+        <p>{{A}}와 {{B}}</p>
+
+        <p>{{'<h1> <> => &lt; &gt; 깨질 수 있다</h1>'}}</p>
+        <p>{{'<h1> safe로 <> 깨짐 방지</h1>'|safe}}</p>
+
+        <ul>
+            {% set fruits = ['사과', '배', '바나나'] %}
+            {% for item in fruits %}
+            <li>{{loop.index}}: {{item}}</li>
+            {% endfor %}
+        </ul>
+
+        {% set isLoggedin = 2 %}
+        {% if isLoggedin == 1 %}
+        <div>로그인 되었어요</div>
+        {% elif isLoggedin == 2 %}
+        <div>로그인 하세요</div>
+        {% else %}
+        <div>회원 가입 하세요</div>
+        {% endif %}
+
+        {% include "component1.html" %}
+
+        {% include "component2.html" %}
+    </body>
+</html>
