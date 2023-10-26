@@ -1,0 +1,105 @@
+ -- mongoDB -- 
+
+cd C:\Users\UM_PC\AppData\Local\Programs\mongosh
+mongosh
+
+---------실행------------
+test>
+
+use admin
+
+db.createUser({user:'root', pwd:'1234', roles:['root']})
+
+컨트롤 c로 나가기
+---------------------------------------------------------------------
+mongosh admin -u root -p 1234
+
+use nodejs
+
+show dbs
+
+db.createCollection('users')
+
+db.createCollection('comments')
+
+show collections
+
+db.users.insertOne(
+  {
+    name: 'zero',
+    age: 24,
+    married: false,
+    comment: '안녕하세요, 간단히 몽고 디비 사용해 봅시다.',
+    createdAt: new Date()
+  }
+);
+
+db.users.insertOne(
+  {
+    name: 'nero',
+    age: 32,
+    married: true,
+    comment: '안녕하세요, nero 친구 zero입니다.',
+    createdAt: new Date()
+  }
+);
+
+db.users.find({name:'zero'})
+
+db.comments.insertOne(
+  {
+    commenter: ObjectId("6539fbbcd17ce16339fc7f51"),
+    comment: '안녕하세요, zero의 댓글입니다',
+    createdAt: new Date()
+  }
+);
+
+db.users.find({});
+
+db.comments.find({});
+
+db.users.find({}, {_id: 0, name: 1, married: 1});
+
+db.users.find(
+  {
+    age: {$gt: 30}, 
+    married: true
+  }, 
+{_id: 0, name: 1, age: 1});
+
+db.users.find(
+  {
+    $or: [
+    {age: {$gt: 30}}, 
+    {married: false} ]
+  }, 
+{_id: 0, name: 1, age: 1});
+
+db.users.find(
+  {}, 
+{_id: 0, name: 1, age: 1}).sort({age: -1});
+
+db.users.find(
+  {}, 
+{_id: 0, name: 1, age: 1}).sort({age: 1});
+
+db.users.find(
+  {}, 
+{_id: 0, name: 1, age: 1}).sort({age: 1}).limit(1).skip(1);
+
+db.users.find({name: "nero"});
+
+db.users.updateOne({name: "nero"}, {$set: {comment: '안녕하세요, nero 친구 zero입니다. ㅋ(편집됨)'}});
+
+db.users.find({name: "nero"});
+
+db.users.find();
+
+db.users.deleteOne({name: 'nero'});
+
+
+
+
+
+
+
