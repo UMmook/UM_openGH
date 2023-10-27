@@ -1,0 +1,8 @@
+ -- 23/10/27 --
+
+MVC 패턴 -> Java spring -> Spring boot
+React
+
+component -> React language(JSX) < Next.js, etc... framework
+
+MVC : Model(DB), View(HTML), Controller(get, ...요청)
