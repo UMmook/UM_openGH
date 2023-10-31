@@ -1,0 +1,14 @@
+웹 랜더링 방법
+1. SSR(Server Side Rendering): nodejs 학습에서 본 모습 (node서버가 페이지 구성) - Backend
+2. CSR(Client Side Rendering): react 앱이 페이지 (재)구성 - Frontend => SSR 확장 (Next.js)
+3. SSG(Static Site Generator): 고정 (대화 x)
+
+a = [10, 20, 30]
+b = a (얕은 카피 x)
+b = a[:] or b = a.copy() (깊은 카피 o)
+
+newValue = {...value} // value: 
+setValue(newValue)
+
+newValue = [...value] // value: 
+setValue(newValue)

@@ -21,7 +21,12 @@ function Nav(props) {
     <div>
       <nav>
         <ol>
-          <li><a href='/read/1'>{props.topics[0].title}</a></li>
+          <li onClick={
+            function(event) {
+              event.preventDefault();
+              props.onchangeMode();
+            }
+          }><a href='/read/1'>{props.topics[0].title}</a></li>
           <li><a href='/read/2'>{props.topics[1].title}</a></li>
           <li><a href='/read/3'>{props.topics[2].title}</a></li>
         </ol>
@@ -92,22 +97,44 @@ function App() {
     {id: 2, title: "cssㅋ", body: "css is ~"},
     {id: 3, title: "jsㅋ", body: "js is ~"},
   ]
+
+  let mode = 'WELCOME'; // WELCOME or READ
+  let content = null;
+
+  if (mode === 'WELCOME') {
+    content = <Article title="welcome" body="hello web" />;
+  } else if (mode === 'READ') {
+    content = <Article title="welcome" body="hello read" />;
+  }
+  // JS 영역에서는 JS 주석을 그대로 사용
+
+  // JSX 영역
   return (
     <div>
+      {/* JSX에서는 CSS주석처럼 쓰되 중괄호가 추가 */}
       <Header title="REACT" onchangeMode={
-        function() {
-          alert('여기는 header');
-        }
+        // function() {
+        //   alert('여기는 header');
+        // }
+        () => {mode = 'WELCOME'; alert(mode);}
       } />
-      <Nav topics = {topics} />
-      <Nav2 topics = {topics} />
-      <Nav3 topics = {topics} onchangeMode={
-        function(id) {
-          alert('여기는 ' + id);
-        }
+      <Nav topics = {topics} onchangeMode={
+        (id) => {mode = 'READ'; alert(mode);}
       } />
-      <Article title="welcome" body="Hello, React!" />
-      <Article title="welcome again" body="Hello, Again!" />
+      {content}
+
+      {/*
+      <div>
+        <Nav2 topics = {topics} />
+        <Nav3 topics = {topics} onchangeMode={
+          function(id) {
+            alert('여기는 ' + id);
+          }
+        } />
+        <Article title="welcome" body="Hello, React!" />
+        <Article title="welcome again" body="Hello, Again!" />
+      </div>
+      */}
     </div>
   );
 }
