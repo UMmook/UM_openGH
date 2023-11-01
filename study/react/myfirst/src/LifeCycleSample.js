@@ -12,7 +12,7 @@ class LifeCycleSample extends Component {
         console.log('i\'m on constructor');
     }
     static getDerivedStateFromProps(nextProps, prevState) {
-        console.log('getDerivedStateFromProps');
+        console.log('i\'m on getDerivedStateFromProps');
         if (nextProps.color !== prevState.color) {
             return {color: nextProps.color};
         }
@@ -31,6 +31,34 @@ class LifeCycleSample extends Component {
                 <button onClick={this.handleClick}>더하기</button>
             </div>
         );
+    }
+    componentDidMount() { 
+        console.log('i\'m on componentDidMount'); 
+    }
+    
+    shouldComponentUpdate(nextProps, nextState) {
+        // 3, 6, 9, ... 리렌더링 안 함
+        console.log('i\'m on shouldComponentUpdate');
+        return nextState.number % 3 !== 0;
+    }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('i\'m on getSnapshotBeforeUpdate');
+        if (prevProps.color !== this.props.color) {
+            return this.myRef.style.color;
+        }
+        return null;
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('i\'m on componentDidUpdate');
+        if(snapshot) {
+            console.log('업데이트 되기 직전 색상: ', snapshot);
+        }
+    }
+
+    componentWillUnmount() {
+        console.log('i\'m on componentWillUnmount');
     }
 }
 
