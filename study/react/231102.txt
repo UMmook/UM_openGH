@@ -1,0 +1,21 @@
+ - 2023/11/02 -
+
+react 기본 - 컴포넌트 사용
+router
+
+styled comp
+useReducer
+
+[ 전역 상태 ] vs [ Props ]
+context api - react 제공
+react-redux - react팀 x, redux팀
+redux-toolkit
+
+redux -> react-redux
+web-client framework: react.js / vue.js / angular.js
+
+- SSR -
+nextjs
+
+ - UI -
+MUI

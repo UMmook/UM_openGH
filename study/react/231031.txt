@@ -7,8 +7,8 @@ a = [10, 20, 30]
 b = a (얕은 카피 x)
 b = a[:] or b = a.copy() (깊은 카피 o)
 
-newValue = {...value} // value: 
+newValue = {...value} // value: 일반 object
 setValue(newValue)
 
-newValue = [...value] // value: 
+newValue = [...value] // value: 배열
 setValue(newValue)
