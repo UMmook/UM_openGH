@@ -1,94 +1,142 @@
-import './App.css';
-import React, { useState } from 'react';
-import { createStore } from 'redux';
-import { Provider, useSelector, useDispatch, connect } from 'react-redux';
+import React, { createContext, useContext, useState } from "react";
 
-function reducer(currentState, action) {
-  if (currentState === undefined) {
-    return {number: 1};
-  }
-  const newState = {...currentState};
+// context에는 상태 뿐 아니라 함수도 전달 가능
+const ColorContext = createContext({
+    state: { color: 'black', subcolor: 'red' },
+    actions: {
+        setColor: () => {},
+        setSubcolor: () => {}
+    }
+});
 
-  if (action.type === 'PLUS') {
-    newState.number++;
-  }
-  return newState;
+const ColorProvider = ({children}) => {
+    const [color, setColor] = useState('black');
+    const [subcolor, setSubcolor] = useState('red');
+
+    const value = {
+        state: {color, subcolor},
+        actions: {setColor, setSubcolor}
+    }
+    return (
+        <ColorContext.Provider value={value}>{children}</ColorContext.Provider>
+    );
+};
+
+const {Consumer: ColorConsumer} = ColorContext;
+
+const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+const SelectColors = () => {
+    return (
+        <div>
+            <h2> 색상을 선택하세요 </h2>
+            <ColorConsumer>
+                {
+                    ({actions}) => (
+                        <div style={{display: 'flex'}}>
+                            {
+                                colors.map(color => (
+                                    <div
+                                    key = {color} style={{
+                                        background: color, width: '24px', height: '24px', cursor: 'pointer'
+                                    }}
+                                    // left click
+                                    onClick={() => {actions.setColor(color)}}
+                                    // right click
+                                    onContextMenu={
+                                        (e) => {
+                                            e.preventDefault();
+                                            actions.setSubcolor(color);
+                                        }
+                                    }
+                                    />
+                                ))
+                            }
+                        </div>
+                    )
+                }
+            </ColorConsumer>
+
+            {/* <div style={{display: 'flex'}}>
+                {
+                    colors.map(color => (
+                        <div
+                        key = {color} style={{
+                            background: color, width: '24px', height: '24px', cursor: 'pointer'
+                        }}
+                        />
+                    ))
+                }
+            </div> */}
+        </div>
+    );
 }
 
-const store = createStore(reducer);
+const ColorBoxUseContext = () => {
+    const {state} = useContext(ColorContext);
+    return (
+        <>
+            <div style={{
+                width: '64px',
+                height: '64px',
+                background: state.color
+            }} />
+            <div style={{
+                width: '32px',
+                height: '32px',
+                background: state.subcolor
+            }} />
+        </>
 
-function Left1(props) {
-  return (
-    <div>
-      <h1>Left1</h1>
-      <Left2 />
-    </div>
-  );
-}
+    );
+};
 
-function Left2(props) {
-  return (
-    <div>
-      <h1>Left2</h1>
-      <Left3 />
-    </div>
-  );
-}
+const ColorBox = () => {
+    return (
+        <ColorConsumer>
+            {
+                value => (
+                    <>
+                        <div style={{
+                            width: '64px',
+                            height: '64px',
+                            background: value.state.color
+                        }} />
+                        <div style={{
+                            width: '32px',
+                            height: '32px',
+                            background: value.state.subcolor
+                        }} />
+                    </>
+                )
+            }
+        </ColorConsumer>
 
-function Left3(props) {
-  // function f(state) {
-  //   return state.number;
-  // }
-  // const number = userSelector(f);
-  const number = useSelector((state) => state.number);
-  return (
-    <div>
-      <h1>Left3 : {number}</h1>
-    </div>
-  );
-}
+        // <ColorContext.Consumer>
+        // {
+        //     value => (
+        //         <div style={{
+        //             width: '64px',
+        //             height: '64px',
+        //             background: value.color
+        //         }} />
+        //     )
+        // }
+        // </ColorContext.Consumer>
+    );
+};
 
-function Right1(props) {
-  return (
-    <div>
-      <h1>Right1</h1>
-      <Right2 />
-    </div>
-  );
-}
+const App = () => {
+    return (
+        // <ColorContext.Provider value={{color: 'red'}}>
+        <ColorProvider>
+            <div>
+                <SelectColors />
+                {/* <ColorBox /> */}
+                <ColorBoxUseContext />
+            </div>
+        </ColorProvider>
+        // </ColorContext.Provider>
+    );
+};
 
-function Right2(props) {
-  return (
-    <div>
-      <h1>Right2</h1>
-      <Right3 />
-    </div>
-  );
-}
-
-function Right3(props) {
-  const dispatch = useDispatch();
-  return (
-    <div>
-      <h1>Right3</h1>
-      <input type='button' value='+' onClick={
-        () => { dispatch({type: 'PLUS'}) }
-      } />
-    </div>
-  );
-}
-
-export default function App() {
-  // const [number, setNumber] = useState(1);
-  return (
-    <div id="container">
-      <h1>Root</h1>
-      <div id='grid'>
-        <Provider store={store}>
-          <Left1 />
-          <Right1 />
-        </Provider>
-      </div>
-    </div>
-  );
-}
+export default App;
