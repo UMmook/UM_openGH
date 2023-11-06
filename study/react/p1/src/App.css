@@ -1,0 +1,16 @@
+body {
+  padding: 20px;
+}
+
+.App {
+  margin: 0 auto; /* 가운데 정렬 */
+  width: 80%;
+}
+
+.App .section {
+  background-color: rgb(200, 200, 200);
+  border: 2px solid rgb(150, 150, 150);
+  margin: 10px;
+  padding-left: 20px;
+  border-radius: 10px;
+}

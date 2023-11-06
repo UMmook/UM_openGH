@@ -1,0 +1,20 @@
+.TodoList {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgb(130, 171, 184);
+    background-color: rgb(144, 216, 238);
+}
+
+.searchbar {
+    border: none;
+    border-bottom: 1px solid white;
+    width: 100%;
+    background-color: rgb(144, 216, 238);
+}
+
+.searchbar:focus {
+    outline: none;
+    border: 1px solid rgb(33, 146, 255);
+    border-radius: 5px;
+}

@@ -1,0 +1,31 @@
+.TodoItem {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+}
+
+.checkbox_col {
+
+}
+
+.content_col {
+    flex: 1
+}
+
+.date_col {
+    font-size: 12px;
+    color: rgb(105, 105, 105);
+}
+
+.button_col button {
+    cursor: pointer;
+    font-size: 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    color: rgb(250, 250, 250);
+    background-color: rgb(33, 146, 255);
+}

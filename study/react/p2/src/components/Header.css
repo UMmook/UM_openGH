@@ -1,0 +1,11 @@
+.Header {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgb(130, 171, 184);
+    background-color: rgb(144, 216, 238);
+}
+
+.Header h1 {
+    color: blueviolet;
+}
