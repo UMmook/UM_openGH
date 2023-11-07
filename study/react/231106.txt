@@ -10,3 +10,6 @@ npx create-next-app@latest .
 √ Would you like to use `src/` directory? ... Yes
 √ Would you like to use App Router? (recommended) ... No
 √ Would you like to customize the default import alias (@/*)? ... No
+
+터미널 실행
+npm run dev
