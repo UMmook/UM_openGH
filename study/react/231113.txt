@@ -1,0 +1,3 @@
+Skeleton: 기획, Final의 스켈레톤
+
+Final: CSR 구현, API서버 구축, 문서화(PPT, DOCX, 소스코드 정리, 동영상 시연)

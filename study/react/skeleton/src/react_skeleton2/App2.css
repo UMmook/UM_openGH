@@ -1,0 +1,9 @@
+.App {
+    text-align: center;
+}
+
+body {
+    background-color: rgba(151, 163, 239);
+    color: white;
+    padding: 20px;
+}
