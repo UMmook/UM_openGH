@@ -1,0 +1,63 @@
+.App {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.card {
+  width: 17%;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.section-title {
+  margin-left: 50px;
+}
+
+@media (max-width: 640px) {
+  .App {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 15px;
+  }
+  
+  .card {
+      width: 100%;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.card-image {
+  width: 100%;
+  height: 160px;
+}
+
+.card-title {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.card-price {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.footer {
+  background-color: #000000;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  color: #ffffff;
+}
